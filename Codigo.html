@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KUISY — Alegría en cada plato</title>
+  <link rel="shortcut icon" href="img/logo2.png" type="image/png" />
+
+  <!-- Google Fonts: Playfair Display (elegante italiana), Bebas Neue (retro bold), Cormorant (refinada) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+
+  <!-- Hoja de estilos externa -->
+  <link rel="stylesheet" href="codigo.css" />
+</head>
+
+<body>
+
+  <!-- ================================================
+       BOTÓN HAMBURGUESA — activa/desactiva el sidebar
+       El JS en index.js escucha el click de este botón
+  =================================================== -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- ================================================
+       SIDEBAR / MENÚ LATERAL
+       - Efecto glassmorphism (vidrio) aplicado en CSS
+       - Los href apuntan a los id de cada sección
+       - onclick="closeMenu()" cierra el sidebar al hacer clic
+  =================================================== -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">KUISY</div>
+    <ul>
+      <li><a href="#inicio"   onclick="closeMenu()">✦ Inicio</a></li>
+      <li><a href="#nosotros" onclick="closeMenu()">✦ Sobre Nosotros</a></li>
+      <li><a href="#menu"     onclick="closeMenu()">✦ Menú</a></li>
+      <li><a href="#reservas" onclick="closeMenu()">✦ Reservas</a></li>
+      <li><a href="#footer"   onclick="closeMenu()">✦ Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Capa oscura que aparece detrás del sidebar abierto -->
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+
+  <!-- ================================================
+       SECCIÓN INICIO — Hero principal
+       min-height: 100vh + radial-gradient con destellos
+       definidos en CSS (.hero, .glow-*)
+  =================================================== -->
+  <section id="inicio" class="hero">
+
+    <!-- Destellos de luz radial (decorativos, animados en CSS) -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+
+    <!-- Imagen de fondo hero con overlay oscuro -->
+    <div class="hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80"
+        alt="Gastronomía KUISY"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Texto central del hero -->
+    <div class="hero-content">
+      <p class="hero-tag">✦ Lima · Andes · Latinoamérica ✦</p>
+      <h1 class="hero-title">KUISY</h1>
+      <p class="hero-subtitle"><em>kusi — quechua: alegría, dicha, ventura</em></p>
+      <p class="hero-desc">
+        Donde la tradición andina se viste de arte urbano.<br/>
+        Un hogar sofisticado con el sabor más auténtico de América.
+      </p>
+      <a href="#reservas" class="btn-primary">Reserva tu mesa</a>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECCIÓN SOBRE NOSOTROS
+  =================================================== -->
+  <section id="nosotros" class="about">
+    <div class="container about-grid">
+
+      <!-- Texto descriptivo -->
+      <div class="about-text">
+        <span class="section-tag">Nuestra Historia</span>
+        <h2>Más que un restaurante,<br/><em>un hogar con sabor</em></h2>
+        <p>
+          KUISY nació del encuentro entre dos mundos: las recetas ancestrales
+          de los Andes peruanos y la energía desbordante del arte callejero
+          latinoamericano. El nombre, del quechua <strong>kusi</strong>, lo dice
+          todo: <em>alegría, dicha, ventura</em>.
+        </p>
+        <p>
+          Cada plato es un mural comestible. Desde un <strong>ceviche limeño</strong>
+          elaborado con ají amarillo de primera, hasta una <strong>bandeja paisa</strong>
+          digna del mejor cocinero de Medellín. Todo preparado con ingredientes
+          frescos, técnica honesta y mucho corazón.
+        </p>
+        <p>
+          Nos inspiramos en la <strong>Comuna 13</strong>: donde el color transforma
+          el concreto en arte, nosotros transformamos ingredientes simples en
+          experiencias que nunca olvidarás.
+        </p>
+        <a href="#menu" class="btn-secondary">Ver el Menú</a>
+      </div>
+
+      <!-- Imagen con badge flotante -->
+      <div class="about-img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
+          alt="Interior KUISY"
+          class="about-img"
+        />
+        <div class="about-badge">Desde<br/>2019</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECCIÓN MENÚ — 3 categorías con pestañas (tabs)
+       El JS maneja la visibilidad de cada tab
+  =================================================== -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+
+      <span class="section-tag center">La Carta</span>
+      <h2 class="center">Sabores que cuentan historias</h2>
+
+      <!-- Pestañas de navegación del menú -->
+      <div class="menu-tabs">
+        <button class="tab active" onclick="showTab('lima')">Lima &amp; Andes</button>
+        <button class="tab"        onclick="showTab('latina')">Cocina Latina</button>
+        <button class="tab"        onclick="showTab('postres')">Postres</button>
+      </div>
+
+      <!-- TAB 1: Lima & Andes -->
+      <div class="tab-content active" id="lima">
+        <div class="menu-grid">
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=600&q=80" alt="Ceviche"/>
+            <div class="menu-info">
+              <h3>Ceviche Limeño Clásico</h3>
+              <p>Corvina fresca, leche de tigre, ají limo, choclo y cancha serrana.</p>
+              <span class="price">RD$ 590</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Lomo saltado"/>
+            <div class="menu-info">
+              <h3>Lomo Saltado Kuisy</h3>
+              <p>Lomo fino, tomate criollo, cebolla morada, sillao y papas doradas.</p>
+              <span class="price">RD$ 720</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&q=80" alt="Ají de gallina"/>
+            <div class="menu-info">
+              <h3>Ají de Gallina Andino</h3>
+              <p>Gallina deshilachada, crema de ají amarillo, pan y aceitunas.</p>
+              <span class="price">RD$ 650</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Anticuchos"/>
+            <div class="menu-info">
+              <h3>Anticuchos de Corazón</h3>
+              <p>Brocheta marinada en ají panka, choclo y papa amarilla.</p>
+              <span class="price">RD$ 480</span>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab lima -->
+
+      <!-- TAB 2: Cocina Latina -->
+      <div class="tab-content" id="latina">
+        <div class="menu-grid">
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=600&q=80" alt="Tacos"/>
+            <div class="menu-info">
+              <h3>Tacos al Pastor</h3>
+              <p>Cerdo adobado, piña asada, cebolla, cilantro y salsa verde.</p>
+              <span class="price">RD$ 450</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80" alt="Bandeja paisa"/>
+            <div class="menu-info">
+              <h3>Bandeja Paisa</h3>
+              <p>Frijoles, arroz, chicharrón, chorizo, huevo, aguacate y arepa.</p>
+              <span class="price">RD$ 780</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=80" alt="Arepas"/>
+            <div class="menu-info">
+              <h3>Arepas Rellenas KUISY</h3>
+              <p>Masa de maíz, queso blanco fundido, pollo mechado y aguacate.</p>
+              <span class="price">RD$ 390</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&q=80" alt="Churrasco"/>
+            <div class="menu-info">
+              <h3>Churrasco Latino</h3>
+              <p>Corte de vacío a la parrilla, chimichurri y yuca frita.</p>
+              <span class="price">RD$ 890</span>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab latina -->
+
+      <!-- TAB 3: Postres -->
+      <div class="tab-content" id="postres">
+        <div class="menu-grid">
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80" alt="Suspiro limeño"/>
+            <div class="menu-info">
+              <h3>Suspiro Limeño</h3>
+              <p>Crema de manjar blanco, merengue de oporto y canela.</p>
+              <span class="price">RD$ 280</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80" alt="Tres leches"/>
+            <div class="menu-info">
+              <h3>Tres Leches de la Abuela</h3>
+              <p>Bizcocho esponjoso bañado en tres leches, canela y fresas.</p>
+              <span class="price">RD$ 260</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=600&q=80" alt="Churros"/>
+            <div class="menu-info">
+              <h3>Churros con Chocolate</h3>
+              <p>Crujientes por fuera, suaves por dentro. Dip de chocolate oscuro.</p>
+              <span class="price">RD$ 220</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&q=80" alt="Picarones"/>
+            <div class="menu-info">
+              <h3>Picarones Andinos</h3>
+              <p>Buñuelos de zapallo y camote bañados en miel de chancaca.</p>
+              <span class="price">RD$ 240</span>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab postres -->
+
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECCIÓN RESERVAS — Formulario conectado a PHP/BD
+       
+       CÓMO CONECTAR A BASE DE DATOS CON PHP:
+       1. Cambia el action del form: action="reserva.php" method="POST"
+       2. En reserva.php recibe con $_POST['nombre'], $_POST['email'], etc.
+       3. Conecta con mysqli o PDO a tu base de datos MySQL
+       4. Inserta el registro en tu tabla `reservas`
+       Ver comentarios dentro del form para cada campo
+  =================================================== -->
+  <section id="reservas" class="reservas">
+    <div class="container">
+
+      <span class="section-tag center">Reservaciones</span>
+      <h2 class="center">Asegura tu lugar<br/><em>en nuestra mesa</em></h2>
+
+      <!-- Información de contacto -->
+      <div class="reserva-contacto">
+        <p>📞 ¿Prefieres llamar? <strong>+1 (809) 374-2658</strong></p>
+        <p>Horario: Lun–Dom · 12:00 pm – 11:00 pm</p>
+      </div>
+
+      <!-- ============================================
+           FORMULARIO DE RESERVAS
+           
+           Para conectar con PHP:
+           - Cambia la etiqueta form a:
+             <form id="reservaForm" action="reserva.php" method="POST">
+           - Elimina onsubmit="handleReserva(event)" si usas PHP puro
+           - O mantenlo si usas fetch() en JS para envío asíncrono (AJAX)
+      ============================================= -->
+      <form id="reservaForm" onsubmit="handleReserva(event)" class="reserva-form" novalidate>
+
+        <!-- Fila 1: Nombre completo -->
+        <div class="form-group">
+          <label for="nombre">Nombre completo *</label>
+          <!-- PHP: $_POST['nombre'] -->
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ej: María García"
+            required
+          />
+        </div>
+
+        <!-- Fila 2: Email y teléfono -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Correo electrónico *</label>
+            <!-- PHP: $_POST['email'] -->
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <!-- PHP: $_POST['telefono'] -->
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="+1 (809) 000-0000"
+            />
+          </div>
+        </div>
+
+        <!-- Fila 3: Fecha y hora -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fecha">Fecha de la reserva *</label>
+            <!-- PHP: $_POST['fecha'] — guardar en columna tipo DATE -->
+            <input
+              type="date"
+              id="fecha"
+              name="fecha"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="hora">Hora *</label>
+            <!-- PHP: $_POST['hora'] — guardar en columna tipo TIME -->
+            <select id="hora" name="hora" required>
+              <option value="">Selecciona la hora</option>
+              <option value="12:00">12:00 pm</option>
+              <option value="13:00">1:00 pm</option>
+              <option value="14:00">2:00 pm</option>
+              <option value="15:00">3:00 pm</option>
+              <option value="19:00">7:00 pm</option>
+              <option value="20:00">8:00 pm</option>
+              <option value="21:00">9:00 pm</option>
+              <option value="22:00">10:00 pm</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Fila 4: Personas y tipo de mesa -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="personas">Número de personas *</label>
+            <!-- PHP: $_POST['personas'] -->
+            <select id="personas" name="personas" required>
+              <option value="">¿Cuántos son?</option>
+              <option value="1">1 persona</option>
+              <option value="2">2 personas</option>
+              <option value="3">3 personas</option>
+              <option value="4">4 personas</option>
+              <option value="5">5 personas</option>
+              <option value="6">6 personas</option>
+              <option value="7+">7 o más</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mesa">Tipo de mesa</label>
+            <!-- PHP: $_POST['mesa'] -->
+            <select id="mesa" name="mesa">
+              <option value="cualquiera">Sin preferencia</option>
+              <option value="interior">Interior (salón principal)</option>
+              <option value="terraza">Terraza exterior</option>
+              <option value="privado">Salón privado</option>
+              <option value="barra">Barra / Bar</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Fila 5: Ocasión especial -->
+        <div class="form-group">
+          <label for="ocasion">Ocasión especial</label>
+          <!-- PHP: $_POST['ocasion'] -->
+          <select id="ocasion" name="ocasion">
+            <option value="ninguna">Ninguna en particular</option>
+            <option value="cumpleanos">🎂 Cumpleaños</option>
+            <option value="aniversario">💍 Aniversario</option>
+            <option value="negocios">💼 Reunión de negocios</option>
+            <option value="familia">👨‍👩‍👧 Reunión familiar</option>
+            <option value="otra">Otra celebración</option>
+          </select>
+        </div>
+
+        <!-- Fila 6: Restricciones alimentarias -->
+        <div class="form-group">
+          <label>Restricciones alimentarias</label>
+          <!-- PHP: $_POST['restricciones'] (array, usar implode) -->
+          <div class="check-group">
+            <label class="check-item">
+              <input type="checkbox" name="restricciones[]" value="vegetariano"/> Vegetariano
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="restricciones[]" value="vegano"/> Vegano
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="restricciones[]" value="celiaco"/> Sin gluten
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="restricciones[]" value="mariscos"/> Alergia a mariscos
+            </label>
+          </div>
+        </div>
+
+        <!-- Fila 7: Mensaje adicional -->
+        <div class="form-group">
+          <label for="mensaje">¿Algo más que debamos saber?</label>
+          <!-- PHP: $_POST['mensaje'] — guardar en columna tipo TEXT -->
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="3"
+            placeholder="Decoración especial, menú para niños, acceso para silla de ruedas..."
+          ></textarea>
+        </div>
+
+        <!-- Botón de envío -->
+        <button type="submit" class="btn-primary full-width">
+          Confirmar Reserva ✦
+        </button>
+
+        <!-- Mensaje de respuesta (JS lo muestra tras el envío) -->
+        <div id="reservaMsg" class="reserva-msg hidden"></div>
+
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       BANNER — Cita inspiracional entre secciones
+  =================================================== -->
+  <div class="banner-quote">
+    <p>"La comida es el idioma universal del amor."</p>
+  </div>
+
+
+  <!-- ================================================
+       FOOTER / CONTACTO
+  =================================================== -->
+  <footer id="footer">
+    <div class="container footer-grid">
+
+      <!-- Columna 1: Marca -->
+      <div class="footer-col">
+        <h3 class="footer-logo">KUISY</h3>
+        <p>Alegría · Dicha · Ventura</p>
+        <p>El sabor de los Andes en cada visita.</p>
+      </div>
+
+      <!-- Columna 2: Horarios -->
+      <div class="footer-col">
+        <h4>Horarios</h4>
+        <p>Lunes – Viernes: 12pm – 11pm</p>
+        <p>Sábado – Domingo: 11am – 12am</p>
+      </div>
+
+      <!-- Columna 3: Contacto -->
+      <div class="footer-col">
+        <h4>Contáctanos</h4>
+        <p>📞 +1 (809) 374-2658</p>
+        <p>📧 hola@kuisy.com</p>
+        <p>📍 Av. Abraham Lincoln 45,<br/>Santo Domingo, RD</p>
+      </div>
+
+      <!-- Columna 4: Redes sociales -->
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="TikTok">TikTok</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Línea inferior del footer -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 Restaurante KUISY — Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+
+  <!-- Script principal (manejo del sidebar, tabs y formulario) -->
+  <script src="codigo.js"></script>
+
+</body>
+</html>
