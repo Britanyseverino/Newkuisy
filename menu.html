@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KUISY — Menú</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ---- TABS: botones para cambiar de categoría ---- */
+    .tabs { display:flex; justify-content:center; gap:12px; margin:36px 0 48px; flex-wrap:wrap; }
+    .tab-btn { font-family:var(--f-serif); font-size:.95rem; font-weight:600; letter-spacing:1px; padding:11px 26px; border:2px solid var(--negro); border-radius:50px; background:transparent; cursor:pointer; transition:all .25s; }
+    .tab-btn:hover, .tab-btn.active { background:var(--negro); color:var(--blanco); }
+
+    /* ---- TAB CONTENT: oculto por defecto, visible cuando tiene clase .active ---- */
+    .tab-content { display:none; }
+    .tab-content.active { display:block; animation:fadeUp .5s ease both; }
+
+    /* ---- GRID de tarjetas de platos ---- */
+    .menu-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(255px,1fr)); gap:26px; padding-bottom:80px; }
+    .card { background:var(--blanco); border-radius:var(--radio); overflow:hidden; box-shadow:var(--sombra); transition:transform .3s,box-shadow .3s; }
+    .card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.14); }
+    .card img { height:195px; transition:transform .4s; }
+    .card:hover img { transform:scale(1.05); } /* zoom suave al pasar el cursor */
+    .card-body { padding:18px 20px; }
+    .card-body h3 { font-family:var(--f-serif); font-size:1.15rem; margin-bottom:6px; }
+    .card-body p  { color:var(--gris); font-size:.92rem; line-height:1.6; margin-bottom:10px; }
+    .price { font-family:var(--f-display); font-size:1.1rem; color:var(--naranja); letter-spacing:1px; }
+
+    /* ---- Etiquetas de categoría en las tarjetas (opcional) ---- */
+    .badge { display:inline-block; font-size:.72rem; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+    .badge-verde { background:rgba(0,180,80,.1); color:#00b450; }
+    .badge-picante{ background:rgba(255,94,26,.1); color:var(--naranja); }
+
+    /* ---- Sección del menú (fondo crema) ---- */
+    .menu-section { padding:60px 0; background:var(--crema); }
+  </style>
+</head>
+<body>
+
+  <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">KUISY</div>
+    <ul>
+      <li><a href="index.html"    onclick="closeMenu()">✦ Inicio</a></li>
+      <li><a href="nosotros.html" onclick="closeMenu()">✦ Sobre Nosotros</a></li>
+      <li><a href="menu.html"     onclick="closeMenu()">✦ Menú</a></li>
+      <li><a href="reservas.html" onclick="closeMenu()">✦ Reservas</a></li>
+      <li><a href="#footer"       onclick="closeMenu()">✦ Contacto</a></li>
+    </ul>
+  </nav>
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <!-- ===== HEADER INTERIOR — banner compacto de la página ===== -->
+  <header class="page-header">
+    <img class="bg" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80" alt="Menú KUISY"/>
+    <div class="overlay-dark"></div>
+    <div class="ph-content fade-up">
+      <p class="ph-tag">✦ Nuestra Carta ✦</p>
+      <h1>MENÚ</h1>
+      <p>Lima · Andes · Latinoamérica</p>
+    </div>
+  </header>
+
+  <!-- ===== MENÚ CON TABS ===== -->
+  <section class="menu-section">
+    <div class="container">
+      <span class="s-tag center">Elige tu categoría</span>
+      <h2 class="center">Sabores que <em>cuentan historias</em></h2>
+
+      <!-- Botones de las pestañas — data-tab vincula con el id del contenido -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="lima"    onclick="showTab('lima')">Lima &amp; Andes</button>
+        <button class="tab-btn"        data-tab="latina"  onclick="showTab('latina')">Cocina Latina</button>
+        <button class="tab-btn"        data-tab="mar"     onclick="showTab('mar')">Del Mar</button>
+        <button class="tab-btn"        data-tab="veggie"  onclick="showTab('veggie')">Veggie &amp; Saludable</button>
+        <button class="tab-btn"        data-tab="postres" onclick="showTab('postres')">Postres</button>
+        <button class="tab-btn"        data-tab="bebidas" onclick="showTab('bebidas')">Bebidas</button>
+      </div>
+
+      <!-- ===== TAB 1: Lima & Andes ===== -->
+      <div class="tab-content active" id="lima">
+        <div class="menu-grid">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=600&q=80" alt="Ceviche"/>
+            <div class="card-body"><span class="badge badge-picante">🌶 Picante</span><h3>Ceviche Limeño Clásico</h3><p>Corvina, leche de tigre, ají limo, choclo y cancha serrana.</p><span class="price">RD$ 590</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Lomo saltado"/>
+            <div class="card-body"><h3>Lomo Saltado Kuisy</h3><p>Lomo fino, tomate criollo, cebolla morada, sillao y papas doradas.</p><span class="price">RD$ 720</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&q=80" alt="Ají de gallina"/>
+            <div class="card-body"><h3>Ají de Gallina Andino</h3><p>Gallina deshilachada, crema de ají amarillo, pan remojado y aceitunas.</p><span class="price">RD$ 650</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Anticuchos"/>
+            <div class="card-body"><span class="badge badge-picante">🔥 Estrella</span><h3>Anticuchos de Corazón</h3><p>Brocheta marinada en ají panka, choclo y papa amarilla.</p><span class="price">RD$ 480</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80" alt="Causa limeña"/>
+            <div class="card-body"><h3>Causa Limeña</h3><p>Papa amarilla, pollo, palta, ají amarillo y mayonesa casera.</p><span class="price">RD$ 420</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80" alt="Arroz con leche peruano"/>
+            <div class="card-body"><h3>Sopa Andina de Quinua</h3><p>Quinua real, verduras de temporada, hierbas andinas y caldo de res.</p><span class="price">RD$ 380</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TAB 2: Cocina Latina ===== -->
+      <div class="tab-content" id="latina">
+        <div class="menu-grid">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=600&q=80" alt="Tacos"/>
+            <div class="card-body"><h3>Tacos al Pastor</h3><p>Cerdo adobado, piña asada, cebolla, cilantro y salsa verde.</p><span class="price">RD$ 450</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80" alt="Bandeja paisa"/>
+            <div class="card-body"><span class="badge badge-picante">🏆 Favorito</span><h3>Bandeja Paisa</h3><p>Frijoles, arroz, chicharrón, chorizo, huevo, aguacate y arepa.</p><span class="price">RD$ 780</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=80" alt="Arepas"/>
+            <div class="card-body"><h3>Arepas Rellenas KUISY</h3><p>Masa de maíz, queso blanco fundido, pollo mechado y aguacate.</p><span class="price">RD$ 390</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&q=80" alt="Churrasco"/>
+            <div class="card-body"><h3>Churrasco Latino</h3><p>Corte de vacío a la parrilla con chimichurri y yuca frita.</p><span class="price">RD$ 890</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80" alt="Ropa vieja"/>
+            <div class="card-body"><h3>Ropa Vieja Cubana</h3><p>Carne desmechada en salsa criolla, arroz congrí y plátano maduro.</p><span class="price">RD$ 680</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?w=600&q=80" alt="Mofongo"/>
+            <div class="card-body"><span class="badge badge-verde">🌱 Local</span><h3>Mofongo KUISY</h3><p>Plátano verde frito y majado, ajo, chicharrón y camarones al ajillo.</p><span class="price">RD$ 620</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TAB 3: Del Mar ===== -->
+      <div class="tab-content" id="mar">
+        <div class="menu-grid">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1559742811-822873691df8?w=600&q=80" alt="Camarones"/>
+            <div class="card-body"><span class="badge badge-picante">🔥 Recomendado</span><h3>Camarones al Ajillo</h3><p>Camarones tigre, mantequilla de ajo, limón, perejil y pan artesanal.</p><span class="price">RD$ 750</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80" alt="Pulpo"/>
+            <div class="card-body"><h3>Pulpo a la Gallega</h3><p>Pulpo tierno, pimentón ahumado, aceite de oliva y papas cocidas.</p><span class="price">RD$ 820</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80" alt="Tiradito"/>
+            <div class="card-body"><h3>Tiradito Nikkei</h3><p>Finas láminas de pescado blanco, leche de tigre con soya y jengibre.</p><span class="price">RD$ 680</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80" alt="Arroz marino"/>
+            <div class="card-body"><h3>Arroz con Mariscos</h3><p>Arroz cremoso con camarones, almejas, calamar y ají amarillo.</p><span class="price">RD$ 710</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TAB 4: Veggie & Saludable ===== -->
+      <div class="tab-content" id="veggie">
+        <div class="menu-grid">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Bowl vegano"/>
+            <div class="card-body"><span class="badge badge-verde">🌱 Vegano</span><h3>Bowl Andino de Quinua</h3><p>Quinua, aguacate, camote asado, espinaca, semillas y aderezo de lima.</p><span class="price">RD$ 480</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80" alt="Ensalada"/>
+            <div class="card-body"><span class="badge badge-verde">🥗 Fresco</span><h3>Ensalada Kusi-Kusi</h3><p>Rúcula, mango, maracuyá, queso fresco, nueces y vinagreta de maracuyá.</p><span class="price">RD$ 390</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Tacos veganos"/>
+            <div class="card-body"><span class="badge badge-verde">🌱 Vegano</span><h3>Tacos de Hongos</h3><p>Champiñones salteados, guacamole, pico de gallo y tortillas de maíz.</p><span class="price">RD$ 420</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TAB 5: Postres ===== -->
+      <div class="tab-content" id="postres">
+        <div class="menu-grid">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80" alt="Suspiro"/>
+            <div class="card-body"><span class="badge badge-picante">⭐ Firma</span><h3>Suspiro Limeño</h3><p>Crema de manjar blanco, merengue de oporto y canela.</p><span class="price">RD$ 280</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80" alt="Tres leches"/>
+            <div class="card-body"><h3>Tres Leches de la Abuela</h3><p>Bizcocho esponjoso bañado en tres leches con fresas y canela.</p><span class="price">RD$ 260</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=600&q=80" alt="Churros"/>
+            <div class="card-body"><h3>Churros con Chocolate</h3><p>Crujientes por fuera, suaves por dentro. Dip de chocolate oscuro 70%.</p><span class="price">RD$ 220</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&q=80" alt="Picarones"/>
+            <div class="card-body"><h3>Picarones Andinos</h3><p>Buñuelos de zapallo y camote bañados en miel de chancaca.</p><span class="price">RD$ 240</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TAB 6: Bebidas ===== -->
+      <div class="tab-content" id="bebidas">
+        <div class="menu-grid">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80" alt="Pisco sour"/>
+            <div class="card-body"><span class="badge badge-picante">🍹 Firma</span><h3>Pisco Sour Clásico</h3><p>Pisco peruano, limón, clara de huevo, jarabe de goma y Amargo de Angostura.</p><span class="price">RD$ 320</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80" alt="Chicha morada"/>
+            <div class="card-body"><span class="badge badge-verde">Sin alcohol</span><h3>Chicha Morada</h3><p>Maíz morado peruano, piña, membrillo, canela y clavo. Refrescante.</p><span class="price">RD$ 180</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1587631540251-3a519688ee13?w=600&q=80" alt="Cóctel tropical"/>
+            <div class="card-body"><h3>Cóctel Kusi-Kusi</h3><p>Ron blanco, maracuyá, limón, jengibre y agua con gas. Firma de la casa.</p><span class="price">RD$ 290</span></div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=600&q=80" alt="Limonada"/>
+            <div class="card-body"><span class="badge badge-verde">Sin alcohol</span><h3>Limonada de Hierbabuena</h3><p>Limón fresco, hierbabuena, azúcar de caña y hielo raspado.</p><span class="price">RD$ 150</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+  <!-- CTA: lleva al usuario a reservar después de ver el menú -->
+  <section style="background:var(--negro);padding:60px 24px;text-align:center;">
+    <h2 style="color:var(--blanco);margin-bottom:12px;">¿Te convenció? <em>Reserva tu mesa</em></h2>
+    <p style="color:rgba(255,255,255,0.55);margin-bottom:28px;">Asegura tu lugar antes de que se llene.</p>
+    <a href="reservas.html" class="btn btn-primary">Hacer Reserva ✦</a>
+  </section>
+
+  <footer id="footer">
+    <div class="container footer-grid">
+      <div class="footer-col"><p class="footer-logo">KUISY</p><p>Alegría · Dicha · Ventura</p></div>
+      <div class="footer-col"><h4>Horarios</h4><p>Lun–Vie: 12pm–11pm</p><p>Sáb–Dom: 11am–12am</p></div>
+      <div class="footer-col"><h4>Contacto</h4><p>📞 +1 (809) 374-2658</p><p>📧 hola@kuisy.com</p></div>
+      <div class="footer-col"><h4>Páginas</h4><a href="index.html">Inicio</a><a href="nosotros.html">Sobre Nosotros</a><a href="reservas.html">Reservas</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Restaurante KUISY</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

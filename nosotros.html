@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KUISY — Sobre Nosotros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ---- Historia: texto e imagen en 2 columnas ---- */
+    .historia { padding:90px 0; background:var(--blanco); }
+    .hist-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    @media(max-width:768px){ .hist-grid { grid-template-columns:1fr; } }
+    .hist-text p { color:var(--gris); line-height:1.95; margin-bottom:14px; font-size:1.05rem; }
+    .hist-text p strong { color:var(--negro); }
+    .hist-text p em { color:var(--naranja); font-style:italic; }
+    .hist-img { height:500px; border-radius:20px; overflow:hidden; box-shadow:var(--sombra); position:relative; }
+    /* Badge flotante encima de la imagen */
+    .hist-badge { position:absolute; bottom:-16px; right:-16px; width:88px; height:88px; border-radius:50%; background:var(--naranja); color:var(--blanco); font-family:var(--f-display); font-size:.85rem; letter-spacing:1px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3; box-shadow:0 4px 20px rgba(255,94,26,.4); }
+
+    /* ---- Valores: 3 columnas ---- */
+    .valores { padding:80px 0; background:var(--crema); }
+    .val-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:28px; margin-top:40px; }
+    .val-card { background:var(--blanco); border-radius:var(--radio); padding:36px 28px; box-shadow:var(--sombra); border-top:4px solid var(--naranja); transition:transform .3s; }
+    .val-card:nth-child(2){ border-top-color:var(--azul); }
+    .val-card:nth-child(3){ border-top-color:var(--amarillo); }
+    .val-card:hover { transform:translateY(-5px); }
+    .val-icon { font-size:2rem; margin-bottom:14px; }
+    .val-card h3 { font-family:var(--f-serif); font-size:1.2rem; margin-bottom:8px; }
+    .val-card p  { color:var(--gris); font-size:.95rem; line-height:1.7; }
+
+    /* ---- Equipo: foto + nombre ---- */
+    .equipo { padding:80px 0; background:var(--negro); color:var(--blanco); }
+    .equipo .s-tag { color:var(--amarillo); background:rgba(255,214,0,.1); }
+    .equipo h2 { color:var(--blanco); }
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:28px; margin-top:40px; }
+    .team-card { text-align:center; }
+    .team-card img { height:240px; border-radius:16px; margin-bottom:16px; filter:grayscale(20%); transition:filter .3s; }
+    .team-card:hover img { filter:grayscale(0%); }
+    .team-card h3 { font-family:var(--f-serif); font-size:1.1rem; color:var(--blanco); margin-bottom:4px; }
+    .team-card p  { font-size:.88rem; color:rgba(255,255,255,.5); letter-spacing:2px; text-transform:uppercase; }
+  </style>
+</head>
+<body>
+
+  <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">KUISY</div>
+    <ul>
+      <li><a href="index.html"    onclick="closeMenu()">✦ Inicio</a></li>
+      <li><a href="nosotros.html" onclick="closeMenu()">✦ Sobre Nosotros</a></li>
+      <li><a href="menu.html"     onclick="closeMenu()">✦ Menú</a></li>
+      <li><a href="reservas.html" onclick="closeMenu()">✦ Reservas</a></li>
+      <li><a href="#footer"       onclick="closeMenu()">✦ Contacto</a></li>
+    </ul>
+  </nav>
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <!-- Header interior -->
+  <header class="page-header">
+    <img class="bg" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=80" alt="Sobre KUISY"/>
+    <div class="overlay-dark"></div>
+    <div class="ph-content fade-up">
+      <p class="ph-tag">✦ Nuestra Historia ✦</p>
+      <h1>NOSOTROS</h1>
+      <p>El alma detrás de cada plato</p>
+    </div>
+  </header>
+
+  <!-- ===== HISTORIA ===== -->
+  <section class="historia">
+    <div class="container hist-grid">
+
+      <!-- Texto de la historia del restaurante -->
+      <div class="hist-text fade-up">
+        <span class="s-tag">Cómo nació KUISY</span>
+        <h2>Más que un restaurante,<br/><em>un hogar con sabor</em></h2>
+        <p>
+          Todo comenzó en 2019 cuando <strong>Valeria Quispe</strong>, chef limeña de tercera
+          generación, llegó a Santo Domingo con una maleta llena de recetas de su abuela
+          y el sueño de mostrarle a la isla el verdadero sabor de los Andes.
+        </p>
+        <p>
+          El nombre <strong>KUISY</strong> viene del quechua <em>kusi</em>, que significa
+          <em>alegría, dicha, ventura</em>. Porque eso es exactamente lo que Valeria quería
+          crear: un lugar donde cada bocado fuera una pequeña celebración.
+        </p>
+        <p>
+          Nos inspiramos en la <strong>Comuna 13 de Medellín</strong>, donde el arte urbano
+          transformó un barrio entero. Nosotros hacemos lo mismo con la gastronomía:
+          tomamos ingredientes humildes y los convertimos en obras maestras.
+        </p>
+        <p>
+          Hoy, KUISY es el punto de encuentro de la comunidad latina en Santo Domingo.
+          Un espacio donde la sofisticación nunca pierde de vista la calidez del hogar.
+        </p>
+        <!-- Hipervínculo directo al menú -->
+        <a href="menu.html" class="btn btn-outline" style="margin-top:16px;">Conoce nuestra carta</a>
+      </div>
+
+      <!-- Imagen del restaurante con badge -->
+      <div class="hist-img">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Chef KUISY"/>
+        <div class="hist-badge">Desde<br/>2019</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== VALORES ===== -->
+  <section class="valores">
+    <div class="container">
+      <span class="s-tag center">Lo que nos mueve</span>
+      <h2 class="center">Nuestros <em>valores</em></h2>
+      <div class="val-grid">
+        <div class="val-card">
+          <div class="val-icon">🌿</div>
+          <h3>Ingredientes frescos</h3>
+          <p>Cada mañana seleccionamos productos del mercado local. Sin conservantes, sin atajos.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-icon">🎨</div>
+          <h3>Arte y creatividad</h3>
+          <p>Cada plato es diseñado como una obra. La presentación es tan importante como el sabor.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-icon">🏠</div>
+          <h3>Calidez de hogar</h3>
+          <p>Sofisticados en estética, cercanos en trato. Aquí siempre hay una silla para ti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EQUIPO ===== -->
+  <section class="equipo">
+    <div class="container">
+      <span class="s-tag center">Las personas detrás</span>
+      <h2 class="center">Nuestro <em>equipo</em></h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80" alt="Chef Valeria"/>
+          <h3>Valeria Quispe</h3>
+          <p>Chef & Fundadora</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Chef Marco"/>
+          <h3>Marco Delgado</h3>
+          <p>Sous Chef</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&q=80" alt="Lucía Morales"/>
+          <h3>Lucía Morales</h3>
+          <p>Sommelier & Bar</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Ana Torres"/>
+          <h3>Ana Torres</h3>
+          <p>Pastelera</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section style="background:var(--naranja);padding:60px 24px;text-align:center;">
+    <h2 style="color:var(--blanco);margin-bottom:12px;">¿Quieres conocernos <em style="color:var(--negro);">en persona?</em></h2>
+    <p style="color:rgba(255,255,255,.85);margin-bottom:28px;">Reserva tu mesa y vive la experiencia KUISY.</p>
+    <a href="reservas.html" class="btn" style="background:var(--negro);color:var(--blanco);">Reservar Mesa ✦</a>
+  </section>
+
+  <footer id="footer">
+    <div class="container footer-grid">
+      <div class="footer-col"><p class="footer-logo">KUISY</p><p>Alegría · Dicha · Ventura</p></div>
+      <div class="footer-col"><h4>Horarios</h4><p>Lun–Vie: 12pm–11pm</p><p>Sáb–Dom: 11am–12am</p></div>
+      <div class="footer-col"><h4>Contacto</h4><p>📞 +1 (809) 374-2658</p><p>📧 hola@kuisy.com</p></div>
+      <div class="footer-col"><h4>Páginas</h4><a href="index.html">Inicio</a><a href="menu.html">Menú</a><a href="reservas.html">Reservas</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Restaurante KUISY</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

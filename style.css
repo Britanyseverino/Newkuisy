@@ -1,0 +1,141 @@
+/* ================================================
+   style.css — Estilos compartidos de TODAS las páginas
+   Paleta: naranja vibrante, azul, amarillo, rosa
+   Inspiración: street art Comuna 13 + elegancia italiana
+================================================= */
+
+/* --- Variables globales de color, fuente y espaciado --- */
+:root {
+  --naranja: #FF5E1A;
+  --azul:    #1A6BFF;
+  --amarillo:#FFD600;
+  --rosa:    #FF2D78;
+  --negro:   #0F0E0D;
+  --crema:   #F9F5EF;
+  --gris:    #6B6560;
+  --blanco:  #FFFFFF;
+
+  /* Tipografías: display=retro bold, serif=italiana elegante, body=refinada */
+  --f-display: 'Bebas Neue', sans-serif;
+  --f-serif:   'Playfair Display', serif;
+  --f-body:    'Cormorant Garamond', serif;
+
+  --sombra: 0 8px 32px rgba(0,0,0,0.12);
+  --radio: 12px;
+}
+
+/* --- Reset básico para que todos los navegadores partan igual --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; }
+body  { font-family: var(--f-body); font-size: 18px; color: var(--negro); background: var(--crema); overflow-x: hidden; }
+img   { display: block; width: 100%; height: 100%; object-fit: cover; }
+a     { text-decoration: none; color: inherit; }
+ul    { list-style: none; }
+
+/* --- Contenedor centrado reutilizable en todas las páginas --- */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ================================================
+   BOTÓN HAMBURGUESA (fijo en toda la web)
+================================================= */
+.menu-toggle {
+  position: fixed; top: 20px; left: 20px; z-index: 1000;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);         /* efecto vidrio */
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 10px; padding: 10px 12px;
+  cursor: pointer; display: flex; flex-direction: column; gap: 5px;
+}
+.menu-toggle span { display: block; width: 24px; height: 2px; background: var(--blanco); border-radius: 2px; transition: all 0.3s; }
+
+/* Transforma las 3 líneas en X cuando el menú está abierto */
+body.menu-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+body.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ================================================
+   SIDEBAR — menú lateral glassmorphism
+================================================= */
+.sidebar {
+  position: fixed; top: 0; left: -280px; width: 260px; height: 100vh;
+  z-index: 999; padding: 60px 32px;
+  background: rgba(15,14,13,0.80);
+  backdrop-filter: blur(20px);         /* efecto vidrio oscuro */
+  border-right: 1px solid rgba(255,255,255,0.08);
+  transition: left 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.sidebar.open { left: 0; }             /* se desliza al abrirse */
+
+.sidebar-logo { font-family: var(--f-display); font-size: 2.4rem; color: var(--amarillo); letter-spacing: 4px; margin-bottom: 48px; }
+.sidebar ul li { margin-bottom: 22px; }
+.sidebar ul li a { font-family: var(--f-serif); font-size: 1.05rem; color: rgba(255,255,255,0.8); letter-spacing: 1px; transition: color 0.2s, padding-left 0.2s; }
+.sidebar ul li a:hover,
+.sidebar ul li a.active { color: var(--naranja); padding-left: 8px; }
+
+/* Overlay oscuro detrás del sidebar */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 998; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.overlay.active { opacity: 1; pointer-events: all; }
+
+/* ================================================
+   HEADER DE PÁGINAS INTERIORES (menu, reservas, nosotros)
+   Banner compacto con título de la sección
+================================================= */
+.page-header {
+  min-height: 40vh;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  text-align: center;
+  position: relative; overflow: hidden;
+  background: var(--negro);
+}
+/* Imagen de fondo del header interior */
+.page-header img.bg { position: absolute; inset: 0; opacity: 0.35; }
+.page-header .overlay-dark { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,14,13,0.5), rgba(15,14,13,0.85)); }
+.page-header .ph-content { position: relative; z-index: 2; }
+.page-header .ph-tag { font-family: var(--f-serif); font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--amarillo); margin-bottom: 12px; }
+.page-header h1 { font-family: var(--f-display); font-size: clamp(3rem,8vw,7rem); color: var(--blanco); letter-spacing: 6px; }
+.page-header p  { font-family: var(--f-serif); font-style: italic; color: rgba(255,255,255,0.65); margin-top: 10px; font-size: 1.1rem; }
+
+/* ================================================
+   BOTONES reutilizables en todas las páginas
+================================================= */
+.btn { display: inline-block; font-family: var(--f-serif); font-size: 0.95rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 14px 36px; border-radius: 50px; cursor: pointer; transition: all 0.25s; border: none; }
+.btn-primary { background: var(--naranja); color: var(--blanco); }
+.btn-primary:hover { background: var(--rosa); transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,45,120,0.3); }
+.btn-outline { background: transparent; border: 2px solid var(--negro); color: var(--negro); }
+.btn-outline:hover { background: var(--negro); color: var(--blanco); transform: translateY(-2px); }
+.btn-full { width: 100%; text-align: center; }
+
+/* ================================================
+   ETIQUETA DE SECCIÓN (pequeño tag encima del título)
+================================================= */
+.s-tag { display: inline-block; font-family: var(--f-serif); font-size: 0.78rem; letter-spacing: 4px; text-transform: uppercase; color: var(--naranja); background: rgba(255,94,26,0.1); padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+.s-tag.center { display: block; text-align: center; }
+
+h2 { font-family: var(--f-serif); font-size: clamp(1.8rem,4vw,3rem); font-weight: 700; line-height: 1.25; margin-bottom: 20px; }
+h2.center { text-align: center; }
+h2 em { color: var(--naranja); font-style: italic; }
+
+/* ================================================
+   FOOTER compartido
+================================================= */
+footer { background: #080807; color: rgba(255,255,255,0.55); padding: 64px 0 0; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 40px; padding-bottom: 48px; }
+.footer-logo { font-family: var(--f-display); font-size: 2.2rem; color: var(--amarillo); letter-spacing: 4px; margin-bottom: 10px; }
+.footer-col h4 { font-family: var(--f-serif); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+.footer-col p, .footer-col a { font-size: 0.95rem; line-height: 2; display: block; transition: color 0.2s; }
+.footer-col a:hover { color: var(--naranja); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+
+/* ================================================
+   ANIMACIÓN DE ENTRADA (usada en todas las páginas)
+================================================= */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.8s ease both; }
+
+/* ================================================
+   RESPONSIVE — pantallas pequeñas
+================================================= */
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .menu-toggle span { background: var(--negro); }   /* ícono oscuro en fondos claros */
+}

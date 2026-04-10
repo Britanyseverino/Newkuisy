@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KUISY — Inicio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <!-- Hoja de estilos compartida por todas las páginas -->
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Estilos exclusivos del hero (inicio) -->
+  <style>
+    /* ---- HERO: ocupa toda la pantalla con destellos de luz ---- */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      /* Radial-gradient que crea destellos de luz desde el centro */
+      background: radial-gradient(ellipse 120% 80% at 50% 40%,
+        rgba(255,214,0,0.18) 0%, rgba(255,94,26,0.12) 35%, rgba(15,14,13,0.95) 70%);
+      overflow: hidden;
+    }
+    /* Imagen de fondo del hero */
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { filter: brightness(0.45) saturate(1.2); }
+    .hero-bg .dim { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,14,13,0.3), rgba(15,14,13,0.75)); }
+
+    /* Destellos animados de color (círculos con blur) */
+    .glow { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; animation: pulse 6s ease-in-out infinite alternate; z-index: 1; }
+    .g1 { width:500px;height:500px; background:var(--amarillo); top:-100px;left:-100px; }
+    .g2 { width:380px;height:380px; background:var(--naranja);  bottom:-60px;right:5%; animation-delay:2s; }
+    .g3 { width:300px;height:300px; background:var(--azul);     top:30%;left:60%;      animation-delay:4s; }
+    @keyframes pulse { to { transform:scale(1.35); opacity:0.45; } }
+
+    /* Contenido central del hero */
+    .hero-content { position:relative; z-index:2; text-align:center; padding:24px; animation: fadeUp 1.2s ease both; }
+    .hero-tag   { font-family:var(--f-serif); font-size:.9rem; letter-spacing:4px; color:var(--amarillo); text-transform:uppercase; margin-bottom:14px; }
+    .hero-title { font-family:var(--f-display); font-size:clamp(5rem,15vw,11rem); color:var(--blanco); letter-spacing:12px; line-height:1; text-shadow:0 4px 40px rgba(255,214,0,0.3); }
+    .hero-sub   { font-family:var(--f-serif); font-style:italic; color:rgba(255,255,255,0.65); font-size:1.2rem; margin:14px 0 20px; }
+    .hero-desc  { color:rgba(255,255,255,0.82); line-height:1.8; margin-bottom:32px; max-width:480px; margin-left:auto; margin-right:auto; }
+    .hero-btns  { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+    /* ---- SECCIÓN: mini-tarjetas de características ---- */
+    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:28px; padding:80px 0; }
+    .feat-card { background:var(--blanco); border-radius:var(--radio); padding:32px 24px; box-shadow:var(--sombra); text-align:center; transition:transform .3s; }
+    .feat-card:hover { transform:translateY(-6px); }
+    .feat-icon { font-size:2.2rem; margin-bottom:14px; }
+    .feat-card h3 { font-family:var(--f-serif); font-size:1.2rem; margin-bottom:8px; }
+    .feat-card p  { color:var(--gris); font-size:.95rem; line-height:1.7; }
+
+    /* ---- SECCIÓN: llamada a la acción ---- */
+    .cta { background:var(--negro); padding:80px 24px; text-align:center; }
+    .cta h2 { color:var(--blanco); } .cta h2 em { color:var(--amarillo); }
+    .cta p  { color:rgba(255,255,255,0.6); margin-bottom:32px; max-width:500px; margin-left:auto; margin-right:auto; line-height:1.8; }
+    .cta .btn-primary { background:var(--amarillo); color:var(--negro); }
+    .cta .btn-primary:hover { background:var(--naranja); color:var(--blanco); }
+  </style>
+</head>
+<body>
+
+  <!-- Botón hamburguesa (abre/cierra el sidebar) -->
+  <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+
+  <!-- Sidebar: menú lateral con efecto vidrio (glassmorphism en style.css) -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">KUISY</div>
+    <ul>
+      <!-- Cada enlace lleva a su propia página HTML -->
+      <li><a href="index.html"    onclick="closeMenu()">✦ Inicio</a></li>
+      <li><a href="nosotros.html" onclick="closeMenu()">✦ Sobre Nosotros</a></li>
+      <li><a href="menu.html"     onclick="closeMenu()">✦ Menú</a></li>
+      <li><a href="reservas.html" onclick="closeMenu()">✦ Reservas</a></li>
+      <li><a href="#footer"       onclick="closeMenu()">✦ Contacto</a></li>
+    </ul>
+  </nav>
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <!-- ===== HERO — sección principal con destellos ===== -->
+  <section class="hero">
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+    <div class="glow g3"></div>
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80" alt="Gastronomía KUISY"/>
+      <div class="dim"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">✦ Lima · Andes · Latinoamérica ✦</p>
+      <h1 class="hero-title">KUISY</h1>
+      <p class="hero-sub"><em>kusi — quechua: alegría, dicha, ventura</em></p>
+      <p class="hero-desc">Donde la tradición andina se viste de arte urbano.<br/>Un hogar sofisticado con el sabor más auténtico de América.</p>
+      <div class="hero-btns">
+        <!-- Hipervínculo al menú de comida (página separada) -->
+        <a href="menu.html" class="btn btn-primary">Ver el Menú</a>
+        <!-- Hipervínculo al formulario de reservas (página separada) -->
+        <a href="reservas.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5);color:var(--blanco);">Reservar Mesa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CARACTERÍSTICAS — 4 íconos destacando el restaurante ===== -->
+  <section>
+    <div class="container">
+      <div class="features fade-up">
+        <div class="feat-card">
+          <div class="feat-icon">🌿</div>
+          <h3>Ingredientes Frescos</h3>
+          <p>Seleccionados cada mañana en mercados locales y traídos directamente del campo.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🎨</div>
+          <h3>Arte en cada Plato</h3>
+          <p>Inspirados en los murales de la Comuna 13, cada presentación es una obra de arte.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🏔️</div>
+          <h3>Recetas Ancestrales</h3>
+          <p>Técnicas quechuas transmitidas por generaciones, llevadas a la mesa moderna.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🏠</div>
+          <h3>Como en Casa</h3>
+          <p>Un ambiente que abraza: sofisticado, cálido y siempre a la moda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LLAMADA A LA ACCIÓN ===== -->
+  <section class="cta">
+    <h2>¿Listo para vivir<br/><em>la experiencia KUISY?</em></h2>
+    <p>Reserva tu mesa hoy y déjate llevar por los sabores que cambiaron Santo Domingo.</p>
+    <!-- Hipervínculo a la página de reservas -->
+    <a href="reservas.html" class="btn btn-primary">Reservar Ahora ✦</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <p class="footer-logo">KUISY</p>
+        <p>Alegría · Dicha · Ventura</p>
+      </div>
+      <div class="footer-col">
+        <h4>Horarios</h4>
+        <p>Lun–Vie: 12pm – 11pm</p>
+        <p>Sáb–Dom: 11am – 12am</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>📞 +1 (809) 374-2658</p>
+        <p>📧 hola@kuisy.com</p>
+        <p>📍 Av. Abraham Lincoln 45, Santo Domingo</p>
+      </div>
+      <div class="footer-col">
+        <h4>Páginas</h4>
+        <a href="nosotros.html">Sobre Nosotros</a>
+        <a href="menu.html">Menú</a>
+        <a href="reservas.html">Reservas</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Restaurante KUISY — Todos los derechos reservados.</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
