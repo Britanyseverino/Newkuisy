@@ -137,5 +137,6 @@ footer { background: #080807; color: rgba(255,255,255,0.55); padding: 64px 0 0; 
 ================================================= */
 @media (max-width: 768px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .menu-toggle span { background: var(--negro); }   /* ícono oscuro en fondos claros */
+  .menu-toggle span { background: var(--negro); }
+  .logo-fixed { width: 60px; height: 60px; bottom: 15px; left: 15px; }
 }

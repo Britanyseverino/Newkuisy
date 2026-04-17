@@ -32,6 +32,14 @@
     .badge-verde { background:rgba(0,180,80,.1); color:#00b450; }
     .badge-picante{ background:rgba(255,94,26,.1); color:var(--naranja); }
 
+    /* ---- Descripción con "Ver más" - Ver menos ---- */
+    .card-desc { display:block; }
+    .card-desc p { max-height:120px; overflow:hidden; transition:max-height .4s ease; }
+    .card-desc p.expanded { max-height:none; overflow:visible; }
+    .btn-read-more { background:none; border:none; color:var(--naranja); cursor:pointer; font-family:var(--f-serif); font-size:.9rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-top:8px; padding:0; display:block; transition:color .2s; }
+    .btn-read-more:hover { color:var(--rosa); }
+    .btn-read-more.hidden { display:none; }
+
     /* ---- Sección del menú (fondo crema) ---- */
     .menu-section { padding:60px 0; background:var(--crema); }
   </style>
@@ -84,11 +92,11 @@
         <div class="menu-grid">
           <div class="card">
             <img src="https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=600&q=80" alt="Ceviche"/>
-            <div class="card-body"><span class="badge badge-picante">🌶 Picante</span><h3>Ceviche Limeño Clásico</h3><p>Corvina, leche de tigre, ají limo, choclo y cancha serrana.</p><span class="price">RD$ 590</span></div>
+            <div class="card-body"><span class="badge badge-picante">🌶 Picante</span><h3>Ceviche Limeño Clásico</h3><p>Experimenta la frescura máxima con nuestro <b>Ceviche Limeño Clásico</b>, una obra maestra de la cocina peruana que resalta por su equilibrio perfecto de acidez y picante. Este plato se prepara con finos trozos de pescado blanco fresco, marinados al momento en una cítrica leche de tigre a base de limón sutil, sal y un toque de ají limo. Se sirve acompañado de los complementos tradicionales que balancean cada bocado: cebolla morada cortada en pluma, camote dulce glaseado, choclo desgranado de grano tierno y una base de lechuga fresca, logrando una explosión de texturas y sabores marinos que transportan directamente a las costas de Lima en cada cucharada.</p><span class="price">RD$ 590</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Lomo saltado"/>
-            <div class="card-body"><h3>Lomo Saltado Kuisy</h3><p>Lomo fino, tomate criollo, cebolla morada, sillao y papas doradas.</p><span class="price">RD$ 720</span></div>
+            <img src="https://chewinghappiness.com/wp-content/uploads/2019/08/Lomaso.jpg" alt="Lomo saltado"card>
+            <div class="card-body"><h3>Lomo Saltado</h3><p>Prueba nuestro <b>Lomo Saltado</b>, un plato emblemático que representa la perfecta armonía entre la técnica del salteado oriental y los ingredientes más vibrantes de la tierra peruana. Este festín se compone de jugosos trozos de lomo de res salteados a fuego alto en un wok para obtener ese aroma ahumado único, mezclados con cebolla morada crujiente, tomates frescos, ají amarillo y un toque de cilantro. Todo se fusiona en una salsa sedosa a base de sillao (soja) y vinagre, servido tradicionalmente sobre una base de papas fritas doradas y acompañado de una porción de arroz blanco bien graneado, ofreciendo una experiencia reconfortante y llena de sabor en cada bocado.</p><span class="price">RD$ 720</span></div>
           </div>
           <div class="card">
             <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&q=80" alt="Ají de gallina"/>
@@ -99,8 +107,8 @@
             <div class="card-body"><span class="badge badge-picante">🔥 Estrella</span><h3>Anticuchos de Corazón</h3><p>Brocheta marinada en ají panka, choclo y papa amarilla.</p><span class="price">RD$ 480</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80" alt="Causa limeña"/>
-            <div class="card-body"><h3>Causa Limeña</h3><p>Papa amarilla, pollo, palta, ají amarillo y mayonesa casera.</p><span class="price">RD$ 420</span></div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Jw_YS1LixgkskTEEJ9WQ5mK1BDmIS7Yjvg&s" alt="Causa limeña"/>
+            <div class="card-body"><h3>Causa Limeña</h3><p>Disfruta de nuestra <b>Causa Limeña</b>, un plato frío súper fresco que combina capas de puré de papa amarilla bien suave con un toque de limón y ají amarillo. Viene rellena con una mezcla cremosa de pollo, mayonesa y láminas de palta (aguacate) que se deshacen en la boca. La decoramos con aceituna, huevo duro y tomates cherry para darle ese cierre perfecto. Es la entrada ideal si buscas algo ligero, rico y con todo el sabor casero de Perú.</p><span class="price">RD$ 420</span></div>
           </div>
           <div class="card">
             <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80" alt="Arroz con leche peruano"/>
@@ -114,27 +122,27 @@
         <div class="menu-grid">
           <div class="card">
             <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=600&q=80" alt="Tacos"/>
-            <div class="card-body"><h3>Tacos al Pastor</h3><p>Cerdo adobado, piña asada, cebolla, cilantro y salsa verde.</p><span class="price">RD$ 450</span></div>
+            <div class="card-body"><h3>Tacos al Pastor</h3><p>Deléitate con nuestros Auténticos Tacos al Pastor, un pilar de la gastronomía mexicana que combina a la perfección sabores dulces, especiados y ahumados. Cada taco se sirve en tortillas de maíz nixtamalizado ligeramente doradas, rellenas de jugosa carne de cerdo marinada en un tradicional adobo de chiles secos, achiote y especias, cocinada lentamente para obtener esa textura tierna y característica. Coronados con cebolla blanca picada, cilantro fresco recién cortado y el indispensable toque de piña asada que aporta un contraste cítrico inigualable, este plato se convierte en una experiencia vibrante y esencial para cualquier amante de la cocina mexicana, ideal para disfrutar con unas gotas de limón y nuestras salsas de la casa.</p><span class="price">RD$ 450</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80" alt="Bandeja paisa"/>
-            <div class="card-body"><span class="badge badge-picante">🏆 Favorito</span><h3>Bandeja Paisa</h3><p>Frijoles, arroz, chicharrón, chorizo, huevo, aguacate y arepa.</p><span class="price">RD$ 780</span></div>
+            <img src="https://www.196flavors.com/wp-content/uploads/2021/06/bandeja-paisa-2fp-500x500.jpg" alt="Bandeja paisa"/>
+            <div class="card-body"><span class="badge badge-picante">🏆 Favorito</span><h3>Bandeja Paisa</h3><p>Déjate conquistar por nuestra Bandeja Paisa, el festín más generoso y emblemático de la región de Antioquia, Colombia, diseñado para los apetitos más exigentes. Este plato es un despliegue de abundancia que combina frijoles rojos cocidos lentamente, arroz blanco suelto, carne desmechada o molida sazonada, y un chicharrón crujiente que es el alma de la preparación. Se acompaña tradicionalmente de un huevo frito de yema tierna, tajadas de plátano maduro frito, chorizo parrillero, morcilla, una arepa de maíz y media palta (aguacate) fresca, creando una sinfonía de texturas y sabores que definen la auténtica cultura cafetera; una experiencia gastronómica completa y reconfortante que celebra la herencia y la hospitalidad colombiana en cada rincón del plato.</p><span class="price">RD$ 780</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=80" alt="Arepas"/>
-            <div class="card-body"><h3>Arepas Rellenas KUISY</h3><p>Masa de maíz, queso blanco fundido, pollo mechado y aguacate.</p><span class="price">RD$ 390</span></div>
+            <img src="https://tiosol.com/wp-content/uploads/2020/03/IMG-Arepas.jpg"/>
+            <div class="card-body"><h3>Fiesta Venezolana para 4 Personas</h3><p>Un combo diseñado para compartir la esencia del sabor caribeño a través de cuatro de nuestras arepas más icónicas. Este banquete incluye la clásica Reina Pepiada, con su relleno cremoso de pollo y aguacate; la contundente Pabellón, que combina carne desmechada, caraotas negras, plátano maduro frito y queso blanco; la deliciosa Catira, rellena de pollo jugoso y abundante queso amarillo; y una cuarta opción a elegir entre nuestras especialidades de la casa. Todas nuestras arepas están elaboradas con masa de maíz 100% natural, asadas al budare para lograr esa textura crujiente por fuera y suave por dentro que las hace únicas, convirtiendo este combo en la opción perfecta para una cena familiar o una reunión entre amigos que buscan una experiencia auténtica y abundante.</p><span class="price">RD$ 390</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&q=80" alt="Churrasco"/>
-            <div class="card-body"><h3>Churrasco Latino</h3><p>Corte de vacío a la parrilla con chimichurri y yuca frita.</p><span class="price">RD$ 890</span></div>
+            <img src="https://img.freepik.com/foto-gratis/vista-lateral-filete-res-parrilla-salsa-sobre-tabla-madera_140725-10264.jpg" alt="Churrasco"/>
+            <div class="card-body"><h3>Churrasco Latino</h3><p>Disfruta de nuestro Churrasco Latino, un corte premium de res seleccionado por su jugosidad y sabor intenso, asado magistralmente a la parrilla para lograr ese sellado exterior perfecto y un término tierno en su interior. Este plato se presenta realzado con escamas de sal marina y se acompaña de nuestra salsa chimichurri artesanal, elaborada con perejil fresco, ajo y especias, además de complementos clásicos como una papa asada gratinada, vegetales salteados y un toque de pimiento ahumado. Es la elección definitiva para los amantes de la carne que buscan una experiencia rústica y auténtica, donde la calidad del corte y el aroma de las brasas son los verdaderos protagonistas de la mesa.</p><span class="price">RD$ 890</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80" alt="Ropa vieja"/>
-            <div class="card-body"><h3>Ropa Vieja Cubana</h3><p>Carne desmechada en salsa criolla, arroz congrí y plátano maduro.</p><span class="price">RD$ 680</span></div>
+            <img src="https://visitcubago.com/wp-content/uploads/2020/06/ropa-vieja-cerdo-con-salsa-de-tomate.jpg" alt="Ropa vieja"/>
+            <div class="card-body"><h3>Ropa Vieja Cubana</h3><p>Disfruta de nuestra Ropa Vieja Cubana, el plato más emblemático de la isla, que destaca por su textura tierna y su profundo sabor criollo. Esta delicia se prepara con falda de res desmechada a mano y cocinada a fuego lento en una base de sofrito con tomates naturales, pimientos, cebollas, ajo, vino seco y especias tradicionales, complementada con el toque salino de aceitunas verdes y pimientos morrones. Servida sobre una generosa cama de arroz blanco y acompañada de una rodaja de limón para realzar sus notas cítricas, este plato es una explosión de cultura y sazón caribeña que promete una experiencia auténtica en cada bocado.</p><span class="price">RD$ 680</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?w=600&q=80" alt="Mofongo"/>
-            <div class="card-body"><span class="badge badge-verde">🌱 Local</span><h3>Mofongo KUISY</h3><p>Plátano verde frito y majado, ajo, chicharrón y camarones al ajillo.</p><span class="price">RD$ 620</span></div>
+            <img src="https://cdn.shopify.com/s/files/1/0669/8958/8713/files/Design_sem_nome_1_480x480.jpg?v=1700513416https://cdn.shopify.com/s/files/1/0669/8958/8713/files/Design_sem_nome_1_480x480.jpg?v=1700513416" alt="Feijoada"/>
+            <div class="card-body"><h3>La feijoada brasileña</h3><p>Sumérgete en la tradición con nuestra Auténtica Feijoada Brasileña, un guiso profundo y reconfortante de frijoles negros cocidos a fuego lento con una selección premium de carnes saladas, ahumadas y frescas que incluyen costilla de cerdo, lomo, chorizo calabresa y el toque crujiente del chicharrón. Este festín se sirve con sus acompañamientos esenciales para equilibrar cada bocado: arroz blanco suelto, farofa (harina de mandioca tostada con especias), rodajas de naranja fresca para limpiar el paladar, couve (col rizada cortada finamente y salteada al ajo) y un refrescante vinagreto de vegetales, ofreciendo una experiencia gastronómica completa, vibrante y llena de cultura directamente desde el Brasil hasta tu mesa.</p><span class="price">RD$ 620</span></div>
           </div>
         </div>
       </div>
