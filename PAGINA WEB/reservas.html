@@ -93,44 +93,7 @@
         <p>Horario: Lun–Dom · 12:00 pm – 11:00 pm</p>
       </div>
 
-      <!--
-        FORMULARIO DE RESERVAS
-        ══════════════════════════════════════════
-        PARA CONECTAR CON PHP + MySQL:
-
-        Paso 1 — Cambia esta línea:
-          <form id="reservaForm" onsubmit="handleReserva(event)">
-        Por esta:
-          <form id="reservaForm" action="reserva.php" method="POST">
-          (y elimina onsubmit si usas PHP puro sin AJAX)
-
-        Paso 2 — Crea reserva.php con este contenido:
-        ─────────────────────────────────────────
-        <?php
-        $pdo = new PDO('mysql:host=localhost;dbname=kuisy_db', 'usuario', 'clave');
-        $sql = "INSERT INTO reservas (nombre,email,telefono,fecha,hora,personas,mesa,ocasion,mensaje)
-                VALUES (?,?,?,?,?,?,?,?,?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-          $_POST['nombre'], $_POST['email'], $_POST['telefono'],
-          $_POST['fecha'],  $_POST['hora'],  $_POST['personas'],
-          $_POST['mesa'],   $_POST['ocasion'],$_POST['mensaje']
-        ]);
-        echo json_encode(['ok'=>true]);
-        ?>
-        ─────────────────────────────────────────
-
-        Paso 3 — SQL para crear la tabla:
-        CREATE TABLE reservas (
-          id        INT AUTO_INCREMENT PRIMARY KEY,
-          nombre    VARCHAR(100), email VARCHAR(150),
-          telefono  VARCHAR(20),  fecha DATE,
-          hora      TIME,         personas VARCHAR(5),
-          mesa      VARCHAR(20),  ocasion VARCHAR(20),
-          mensaje   TEXT,         creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        );
-        ══════════════════════════════════════════
-      -->
+      
       <form id="reservaForm" onsubmit="handleReserva(event)" class="reserva-form" novalidate>
 
         <!-- Nombre completo — PHP: $_POST['nombre'] -->
