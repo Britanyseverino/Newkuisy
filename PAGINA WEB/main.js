@@ -91,12 +91,15 @@ const translations = {
    FUNCIONALIDAD "VER MÁS" en descripciones de platos
 ======================================================== */
 function initReadMore() {
-  const cardBodies = document.querySelectorAll('.card-body');
+  const cardBodies = document.querySelectorAll('.card-body:not([data-readmore-init]):not(.no-readmore)');
   const MAX_HEIGHT = 120; // píxeles, aproximadamente 3 líneas
   
   cardBodies.forEach(body => {
     const paragraph = body.querySelector('p');
     if (paragraph) {
+      // Marcar como procesado para evitar duplicados
+      body.setAttribute('data-readmore-init', 'true');
+      
       // Crear wrapper para la descripción
       const descWrapper = document.createElement('div');
       descWrapper.className = 'card-desc';
@@ -113,13 +116,7 @@ function initReadMore() {
       
       descWrapper.appendChild(btn);
       
-      // Verificar si el texto está truncado
-      setTimeout(() => {
-        const isOverflowing = paragraph.scrollHeight > paragraph.offsetHeight + 2;
-        if (!isOverflowing) {
-          btn.classList.add('hidden');
-        }
-      }, 100);
+      // El botón siempre se muestra (para todos los platos)
       
       // Event listener para expandir/contraer
       btn.addEventListener('click', function(e) {
@@ -135,15 +132,32 @@ function initReadMore() {
 function initLanguage() {
   let lang = localStorage.getItem('website-lang');
   if (!lang) {
-    showLanguageAlert();
+    // Por defecto: ESPAÑOL (previene traducciones automáticas no deseadas)
+    setLanguage('es');
+    // Muestra alerta para que usuario elija
+    setTimeout(showLanguageAlert, 500);
   } else {
     setLanguage(lang);
   }
 }
 
-/* Muestra un alert para seleccionar idioma */
+/* Muestra un alert MEJORADO para seleccionar idioma */
 function showLanguageAlert() {
-  const result = confirm('¿Deseas traducir la página al inglés?\n\nDo you want to translate the page to English?\n\n[OK = English | Cancel = Español]');
+  const mensaje = `
+╔════════════════════════════════════╗
+║    🌍 SELECCIONAR IDIOMA 🌍       ║
+╠════════════════════════════════════╣
+║                                    ║
+║  ¿En qué idioma deseas ver        ║
+║  la página?                        ║
+║                                    ║
+║  ✔ ACEPTAR = Inglés (English)     ║
+║  ✘ CANCELAR = Español             ║
+║                                    ║
+╚════════════════════════════════════╝
+  `;
+  
+  const result = confirm(mensaje);
   setLanguage(result ? 'en' : 'es');
 }
 
@@ -184,8 +198,10 @@ function closeLanguageModal() {
   if (modal) modal.classList.remove('show');
 }
 
-/* Alerta que avisa los fines de la pagina */
-alert('Esta página está hecha con fines estudiantiles');
+/* Alerta que avisa los fines de la pagina - SOLO EN INDEX */
+if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
+  alert('Esta página está hecha con fines estudiantiles');
+}
 
 /* --- Abre el sidebar y muestra el overlay --- */
 function openMenu() {
@@ -226,22 +242,18 @@ if (inputFecha) {
 function showTab(id) {
   /* Oculta todos los contenidos de tab */
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+
   /* Desactiva todos los botones de tab */
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
   /* Activa el contenido y botón seleccionado */
   document.getElementById(id)?.classList.add('active');
   document.querySelector(`[data-tab="${id}"]`)?.classList.add('active');
+
+  /* Reinicializa la funcionalidad "Ver más" para el nuevo tab */
+  setTimeout(() => initReadMore(), 100);
 }
 
-/* ================================================
-   FORMULARIO DE RESERVAS (solo en reservas.html)
-
-   PARA CONECTAR CON PHP:
-   1. Cambia onsubmit por: <form action="reserva.php" method="POST">
-   2. En reserva.php usa $_POST['nombre'], $_POST['fecha'], etc.
-   3. Responde con json_encode(['ok'=>true]) para el fetch()
-   4. Inserta en MySQL con PDO (ver comentario en reservas.html)
-================================================= */
 function handleReserva(e) {
   e.preventDefault(); /* evita recargar la página */
 
@@ -261,21 +273,6 @@ function handleReserva(e) {
     return;
   }
 
-  /* --- BLOQUE fetch() para envío AJAX a PHP ---
-     Descomenta esto y borra el setTimeout de abajo
-     cuando tengas tu reserva.php listo:
-
-  fetch('reserva.php', { method:'POST', body: new FormData(form) })
-    .then(r => r.json())
-    .then(data => {
-      if (data.ok) { mostrarMsg('¡Reserva confirmada!', 'success'); form.reset(); }
-      else mostrarMsg(data.msg, 'error');
-    })
-    .catch(() => mostrarMsg('Error de conexión', 'error'));
-  return;
-  */
-
-  /* Simulación mientras no tienes el PHP listo */
   const btn = form.querySelector('button[type="submit"]');
   btn.disabled = true; btn.textContent = 'Procesando...';
   setTimeout(() => {
@@ -298,4 +295,50 @@ function mostrarMsg(texto, tipo) {
 document.addEventListener('DOMContentLoaded', function() {
   initLanguage();
   initReadMore();
+  createLanguageToggle();
 });
+
+/* Crea un botón flotante para cambiar idioma */
+function createLanguageToggle() {
+  // Verificar si el botón ya existe
+  if (document.getElementById('languageToggle')) return;
+  
+  const button = document.createElement('button');
+  button.id = 'languageToggle';
+  button.setAttribute('aria-label', 'Cambiar idioma / Change language');
+  button.innerHTML = '🌐 <span id="langText">ES</span>';
+  button.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, var(--naranja), var(--amarillo));
+    color: var(--negro);
+    border: 2px solid var(--negro);
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(255, 94, 26, 0.4);
+    transition: all 0.3s ease;
+    font-family: var(--f-serif);
+  `;
+  
+  button.addEventListener('mouseenter', () => {
+    button.style.transform = 'scale(1.1)';
+    button.style.boxShadow = '0 6px 18px rgba(255, 94, 26, 0.6)';
+  });
+  
+  button.addEventListener('mouseleave', () => {
+    button.style.transform = 'scale(1)';
+    button.style.boxShadow = '0 4px 12px rgba(255, 94, 26, 0.4)';
+  });
+  
+  button.addEventListener('click', toggleLanguage);
+  
+  document.body.appendChild(button);
+  updateLanguageToggleText();
+}
+
+

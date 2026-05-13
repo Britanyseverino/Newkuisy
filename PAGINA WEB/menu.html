@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KUISY — Menú</title>
+    <link rel="icon" href="../img/logo2.icon" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <style>
@@ -34,7 +35,7 @@
 
     /* ---- Descripción con "Ver más" - Ver menos ---- */
     .card-desc { display:block; }
-    .card-desc p { max-height:120px; overflow:hidden; transition:max-height .4s ease; }
+    .card-desc p { max-height:116px; overflow:hidden; transition:max-height .4s ease; }
     .card-desc p.expanded { max-height:none; overflow:visible; }
     .btn-read-more { background:none; border:none; color:var(--naranja); cursor:pointer; font-family:var(--f-serif); font-size:.9rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-top:8px; padding:0; display:block; transition:color .2s; }
     .btn-read-more:hover { color:var(--rosa); }
@@ -48,13 +49,17 @@
 
   <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
 
+  <!-- Logo fijo en esquina superior derecha -->
+  <a href="index.html" class="logo-fixed" title="Ir a inicio">
+    <img src="../img/logo2.icon" alt="KUISY Logo" />
+  </a>
+
   <nav class="sidebar" id="sidebar">
     <div class="sidebar-logo">KUISY</div>
     <ul>
       <li><a href="index.html"    onclick="closeMenu()">✦ Inicio</a></li>
       <li><a href="nosotros.html" onclick="closeMenu()">✦ Sobre Nosotros</a></li>
       <li><a href="menu.html"     onclick="closeMenu()">✦ Menú</a></li>
-      <li><a href="reservas.html" onclick="closeMenu()">✦ Reservas</a></li>
       <li><a href="#footer"       onclick="closeMenu()">✦ Contacto</a></li>
     </ul>
   </nav>
@@ -81,7 +86,6 @@
       <div class="tabs">
         <button class="tab-btn active" data-tab="lima"    onclick="showTab('lima')">Lima &amp; Andes</button>
         <button class="tab-btn"        data-tab="latina"  onclick="showTab('latina')">Cocina Latina</button>
-        <button class="tab-btn"        data-tab="mar"     onclick="showTab('mar')">Del Mar</button>
         <button class="tab-btn"        data-tab="veggie"  onclick="showTab('veggie')">Veggie &amp; Saludable</button>
         <button class="tab-btn"        data-tab="postres" onclick="showTab('postres')">Postres</button>
         <button class="tab-btn"        data-tab="bebidas" onclick="showTab('bebidas')">Bebidas</button>
@@ -100,11 +104,11 @@
           </div>
           <div class="card">
             <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&q=80" alt="Ají de gallina"/>
-            <div class="card-body"><h3>Ají de Gallina Andino</h3><p>Gallina deshilachada, crema de ají amarillo, pan remojado y aceitunas.</p><span class="price">RD$ 650</span></div>
+            <div class="card-body"><h3>Ají de Gallina Andino</h3><p>Tradicional receta peruana elaborada con gallina deshilachada en una cremosa salsa de ají amarillo, leche y especias suaves. Servido sobre pan artesanal y acompañado de huevo, aceitunas y hierbas frescas, creando un sabor intenso, cremoso y ligeramente picante con esencia andina.</p><span class="price">RD$ 650</span></div>
           </div>
           <div class="card">
             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Anticuchos"/>
-            <div class="card-body"><span class="badge badge-picante">🔥 Estrella</span><h3>Anticuchos de Corazón</h3><p>Brocheta marinada en ají panka, choclo y papa amarilla.</p><span class="price">RD$ 480</span></div>
+            <div class="card-body"><span class="badge badge-picante">🔥 Estrella</span><h3>Anticuchos de Corazón</h3><p>Jugosos anticuchos de corazón marinados en especias peruanas y cocinados a la parrilla hasta lograr un sabor ahumado e intenso. Servidos con papas fritas crujientes, maíz, tomates frescos, zucchini salteado y una salsa especial de la casa que resalta cada sabor con un toque tradicional y elegante.</p><span class="price">RD$ 480</span></div>
           </div>
           <div class="card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Jw_YS1LixgkskTEEJ9WQ5mK1BDmIS7Yjvg&s" alt="Causa limeña"/>
@@ -112,7 +116,7 @@
           </div>
           <div class="card">
             <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80" alt="Arroz con leche peruano"/>
-            <div class="card-body"><h3>Sopa Andina de Quinua</h3><p>Quinua real, verduras de temporada, hierbas andinas y caldo de res.</p><span class="price">RD$ 380</span></div>
+            <div class="card-body"><h3>Sopa Andina de Quinua</h3><p>Nuestra Sopa Andina de Quinua es una joya nutricional que deleita la vista y el paladar. Este caldo espeso y vibrante se elabora con una base de quinua perlada, trozos tiernos de coliflor, zanahorias dulces y guisantes frescos, todo cocido a fuego lento en una esencia de especias andinas y un toque de crema de leche para una textura sedosa. Coronada con hojas de cilantro fresco y servida con arroz blanco desgranado, es la combinación perfecta de ingredientes naturales, frescura y ese calor de hogar que tu cuerpo necesita.</p><span class="price">RD$ 380</span></div>
           </div>
         </div>
       </div>
@@ -147,42 +151,21 @@
         </div>
       </div>
 
-      <!-- ===== TAB 3: Del Mar ===== -->
-      <div class="tab-content" id="mar">
-        <div class="menu-grid">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1559742811-822873691df8?w=600&q=80" alt="Camarones"/>
-            <div class="card-body"><span class="badge badge-picante">🔥 Recomendado</span><h3>Camarones al Ajillo</h3><p>Camarones tigre, mantequilla de ajo, limón, perejil y pan artesanal.</p><span class="price">RD$ 750</span></div>
-          </div>
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80" alt="Pulpo"/>
-            <div class="card-body"><h3>Pulpo a la Gallega</h3><p>Pulpo tierno, pimentón ahumado, aceite de oliva y papas cocidas.</p><span class="price">RD$ 820</span></div>
-          </div>
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80" alt="Tiradito"/>
-            <div class="card-body"><h3>Tiradito Nikkei</h3><p>Finas láminas de pescado blanco, leche de tigre con soya y jengibre.</p><span class="price">RD$ 680</span></div>
-          </div>
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80" alt="Arroz marino"/>
-            <div class="card-body"><h3>Arroz con Mariscos</h3><p>Arroz cremoso con camarones, almejas, calamar y ají amarillo.</p><span class="price">RD$ 710</span></div>
-          </div>
-        </div>
-      </div>
-
+      
       <!-- ===== TAB 4: Veggie & Saludable ===== -->
       <div class="tab-content" id="veggie">
         <div class="menu-grid">
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Bowl vegano"/>
-            <div class="card-body"><span class="badge badge-verde">🌱 Vegano</span><h3>Bowl Andino de Quinua</h3><p>Quinua, aguacate, camote asado, espinaca, semillas y aderezo de lima.</p><span class="price">RD$ 480</span></div>
+            <img src="https://www.recetasnestle.com.ec/sites/default/files/srh_recipes/667ced98322620dda74b236ba0aea74c.jpg" alt="Bowl vegano"/>
+            <div class="card-body"><span class="badge badge-verde">🥬 Plant Based</span><h3>Ceviche de Palmito</h3><p>Fresca combinación de palmito tierno, cebolla morada, tomate y jugo cítrico marinado con especias naturales. Su sabor ligero y refrescante resalta las notas tropicales y crea un balance perfecto entre acidez, frescura y suavidad.</p><span class="price">RD$ 480</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80" alt="Ensalada"/>
-            <div class="card-body"><span class="badge badge-verde">🥗 Fresco</span><h3>Ensalada Kusi-Kusi</h3><p>Rúcula, mango, maracuyá, queso fresco, nueces y vinagreta de maracuyá.</p><span class="price">RD$ 390</span></div>
+            <img src="https://www.jctropicals.us/wp-content/uploads/2023/08/JCTropicals_TADG_SalmonPokeWithAvocadoDragonfruit_2246.jpg" alt="Ensalada"/>
+            <div class="card-body"><span class="badge badge-verde">🥗 Fresco</span><h3>Poke Bowl Tropical 🥗</h3><p>Refrescante mezcla de arroz, mango, pepino, aguacate, edamames y vegetales frescos, acompañado de una ligera salsa cítrica y semillas tostadas. Un plato fresco, ligero y lleno de sabores tropicales.</p><span class="price">RD$ 390</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Tacos veganos"/>
-            <div class="card-body"><span class="badge badge-verde">🌱 Vegano</span><h3>Tacos de Hongos</h3><p>Champiñones salteados, guacamole, pico de gallo y tortillas de maíz.</p><span class="price">RD$ 420</span></div>
+            <img src="https://fullofplants.com/wp-content/uploads/2024/06/vegan-jackfruit-tacos-with-lime-yogurt-sauce-20.jpg" alt="Tacos veganos"/>
+            <div class="card-body"><span class="badge badge-verde">🌱 Vegano</span><h3>Tacos de Jackfruit 🌮</h3><p>Para los amantes de los tacos, aqui le traemos una de las mejores opciones veganas unas tortillas de maíz rellenas de jackfruit desmenuzado y salteado en salsa de tomate, ajo, cebolla y especias ahumadas. Acompañados de aguacate fresco, pico de gallo, cebolla morada y crema vegetal, logrando una mezcla de sabores intensos, cítricos y ligeramente picantes con una textura suave y jugosa.</p><span class="price">RD$ 420</span></div>
           </div>
         </div>
       </div>
@@ -191,20 +174,20 @@
       <div class="tab-content" id="postres">
         <div class="menu-grid">
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80" alt="Suspiro"/>
-            <div class="card-body"><span class="badge badge-picante">⭐ Firma</span><h3>Suspiro Limeño</h3><p>Crema de manjar blanco, merengue de oporto y canela.</p><span class="price">RD$ 280</span></div>
+            <img src="https://es.cravingsjournal.com/wp-content/uploads/2018/07/suspiro-de-limen%CC%83a-1.jpg" alt="Suspiro"/>
+            <div class="card-body"><span class="badge badge-picante">⭐ Firma</span><h3>Suspiro Limeño</h3><p>Tradicional postre peruano elaborado con una suave crema de manjar blanco y coronado con un delicado merengue aromatizado con canela. Su textura cremosa y su dulzor equilibrado crean una combinación elegante y reconfortante en cada cucharada.</p><span class="price">RD$ 280</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80" alt="Tres leches"/>
-            <div class="card-body"><h3>Tres Leches de la Abuela</h3><p>Bizcocho esponjoso bañado en tres leches con fresas y canela.</p><span class="price">RD$ 260</span></div>
+            <img src="https://www.recetasnestle.com.py/sites/default/files/srh_recipes/c880c5651a6e82065962cf3bc20efaef.jpg" alt="Tres leches"/>
+            <div class="card-body"><h3>Volcán de Chocolate Andino</h3><p>Esponjoso bizcocho de chocolate oscuro con un irresistible centro líquido que se derrama al abrirlo. Su sabor intenso a cacao, combinado con su textura suave y caliente, convierte este postre en una experiencia dulce y envolvente.</p><span class="price">RD$ 260</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=600&q=80" alt="Churros"/>
-            <div class="card-body"><h3>Churros con Chocolate</h3><p>Crujientes por fuera, suaves por dentro. Dip de chocolate oscuro 70%.</p><span class="price">RD$ 220</span></div>
+            <img src="https://alatinflair.com/wp-content/uploads/2022/07/vertical-Coconut-Flan-over-black-dish-decorated-with-orchid-flowers-683x1024.jpg" alt="Churros"/>
+            <div class="card-body"><h3>Flan de Coco Caribeño</h3><p>Cremoso flan elaborado con leche de coco y suaves notas tropicales que evocan la esencia del Caribe latino. Su textura ligera y sedosa, junto a su dulzor delicado, ofrecen un postre refrescante y lleno de sabor.</p><span class="price">RD$ 220</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&q=80" alt="Picarones"/>
-            <div class="card-body"><h3>Picarones Andinos</h3><p>Buñuelos de zapallo y camote bañados en miel de chancaca.</p><span class="price">RD$ 240</span></div>
+            <img src="https://tiaclara.com/wp-content/uploads/2013/12/caribbean-guava-tart-DSC3240.jpg" alt="Picarones"/>
+            <div class="card-body"><h3>Tarta de Guayaba y Queso</h3><p>Delicada tarta horneada con una suave mezcla de queso cremoso y dulce de guayaba, logrando el equilibrio perfecto entre lo dulce y lo ligeramente salado. Su textura suave y su sabor tropical la convierten en un postre clásico latino con un toque elegante.</p><span class="price">RD$ 240</span></div>
           </div>
         </div>
       </div>
@@ -213,41 +196,39 @@
       <div class="tab-content" id="bebidas">
         <div class="menu-grid">
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80" alt="Pisco sour"/>
-            <div class="card-body"><span class="badge badge-picante">🍹 Firma</span><h3>Pisco Sour Clásico</h3><p>Pisco peruano, limón, clara de huevo, jarabe de goma y Amargo de Angostura.</p><span class="price">RD$ 320</span></div>
+            <img src="https://res.cloudinary.com/htt8g4cd/image/upload/wp/01_24_pisco_sour_hero_gettyimages-1127875483_1920x1280" alt="Pisco sour"/>
+            <div class="card-body no-readmore"><span class="badge badge-picante">🍹 TOP SELLER</span><h3>Pisco Sour Clásico</h3><p>Bebida suave y equilibrada preparada con pisco, jugo de limón y jarabe dulce, coronada con una espuma ligera y cremosa de sabor cítrico y refrescante.</p><span class="price">RD$ 320</span></div>
           </div>
           <div class="card">
-            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80" alt="Chicha morada"/>
-            <div class="card-body"><span class="badge badge-verde">Sin alcohol</span><h3>Chicha Morada</h3><p>Maíz morado peruano, piña, membrillo, canela y clavo. Refrescante.</p><span class="price">RD$ 180</span></div>
+            <img src="https://origin.cronosmedia.glr.pe/large/2023/07/24/lg_64bebe2ae1753238157f7157.jpg" alt="Chicha morada"/>
+            <div class="card-body no-readmore"><span class="badge badge-verde">Sin alcohol</span><h3>Chicha Morada</h3><p>Refrescante bebida andina elaborada con maíz morado, piña, canela y clavos dulces. Tiene un sabor frutal, especiado y ligeramente dulce.</p><span class="price">RD$ 180</span></div>
           </div>
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1587631540251-3a519688ee13?w=600&q=80" alt="Cóctel tropical"/>
-            <div class="card-body"><h3>Cóctel Kusi-Kusi</h3><p>Ron blanco, maracuyá, limón, jengibre y agua con gas. Firma de la casa.</p><span class="price">RD$ 290</span></div>
+          <div class="card">  
+            <img src="https://www.chabucarestaurant.com/wp-content/uploads/2020/04/ruso-blanco-300x374.jpg" alt="Cóctel tropical"/>
+            <div class="card-body"><span class="badge badge-picante">Soda tropical ☀️</span><h3>Maracuyá Sunset</h3><p>Una explosión tropical elegante y refrescante. Mezcla de maracuyá natural, naranja cítrica y soda italiana burbujeante, servida con hielo cristalino y un acabado brillante que recuerda un atardecer latino. Dulce, fresca y con ese toque exótico que hace imposible pedir solo una.</p><span class="price">RD$ 290</span></div>
           </div>
           <div class="card">
             <img src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=600&q=80" alt="Limonada"/>
-            <div class="card-body"><span class="badge badge-verde">Sin alcohol</span><h3>Limonada de Hierbabuena</h3><p>Limón fresco, hierbabuena, azúcar de caña y hielo raspado.</p><span class="price">RD$ 150</span></div>
+            <div class="card-body no-readmore"><span class="badge badge-verde">Sin alcohol</span><h3>Cuba Libre</h3><p>Refrescante combinación de ron oscuro, cola y limón fresco. Su sabor mezcla notas dulces, cítricas y un ligero toque intenso del ron.</p><span class="price">RD$ 150</span></div>
           </div>
         </div>
       </div>
 
-    </div><!-- /container -->
+    </div>
+  
   </section>
 
-  <!-- CTA: lleva al usuario a reservar después de ver el menú -->
-  <section style="background:var(--negro);padding:60px 24px;text-align:center;">
-    <h2 style="color:var(--blanco);margin-bottom:12px;">¿Te convenció? <em>Reserva tu mesa</em></h2>
-    <p style="color:rgba(255,255,255,0.55);margin-bottom:28px;">Asegura tu lugar antes de que se llene.</p>
-    <a href="reservas.html" class="btn btn-primary">Hacer Reserva ✦</a>
-  </section>
 
+  <!--FOOTER-->
+  
   <footer id="footer">
     <div class="container footer-grid">
       <div class="footer-col"><p class="footer-logo">KUISY</p><p>Alegría · Dicha · Ventura</p></div>
-      <div class="footer-col"><h4>Horarios</h4><p>Lun–Vie: 12pm–11pm</p><p>Sáb–Dom: 11am–12am</p></div>
-      <div class="footer-col"><h4>Contacto</h4><p>📞 +1 (809) 374-2658</p><p>📧 hola@kuisy.com</p></div>
-      <div class="footer-col"><h4>Páginas</h4><a href="index.html">Inicio</a><a href="nosotros.html">Sobre Nosotros</a><a href="reservas.html">Reservas</a></div>
-    </div>
+      <div class="footer-col"><p class="footer-logo">Horarios</p><p>Lun–Vie: 12pm–11pm</p><p>Sáb–Dom: 11am–12am</p></div>
+      <div class="footer-col"><p class="footer-logo">Contacto</p><p>📞 +1 (809) 374-2658</p><p>📧 hola@kuisy.com</p></div>
+      <div class="footer-col"><p class="footer-logo">Páginas</p><a href="index.html">Inicio</a><a href="menu.html">Menú</a><a href="reservas.html">Reservas</a></div>
+       <div class="footer-col"><p class="footer-logo">Dirección</p><p>📍 Av. Abraham Lincoln 45, Santo Domingo</p></div>
+        <div class="footer-col"><p class="footer-logo">Autores</p><p> Abdiel Capellán <br>Malbin Saldaña <br>Britany Severino</p></div>
     <div class="footer-bottom">&copy; 2026 Restaurante KUISY</div>
   </footer>
 

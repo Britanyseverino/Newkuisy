@@ -6,14 +6,15 @@
 
 /* --- Variables globales de color, fuente y espaciado --- */
 :root {
+   --amarillo_suave: #e3ca50;
   --naranja: #FF5E1A;
   --azul:    #1A6BFF;
-  --amarillo:#FFD600;
+  --amarillo:#ffd500;
   --rosa:    #FF2D78;
   --negro:   #0F0E0D;
   --crema:   #F9F5EF;
   --gris:    #6B6560;
-  --blanco:  #FFFFFF;
+  --blanco:  #FFFFFF;   
 
   /* Tipografías: display=retro bold, serif=italiana elegante, body=refinada */
   --f-display: 'Bebas Neue', sans-serif;
@@ -23,7 +24,7 @@
   --sombra: 0 8px 32px rgba(0,0,0,0.12);
   --radio: 12px;
 }
-
+ 
 /* --- Reset básico para que todos los navegadores partan igual --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html  { scroll-behavior: smooth; }
@@ -52,6 +53,52 @@ ul    { list-style: none; }
 body.menu-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 body.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
 body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ================================================
+   LOGO FIJO — esquina superior derecha
+================================================= */
+.logo-fixed {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 950;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.logo-fixed img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+}
+
+.logo-fixed:hover {
+  transform: scale(1.12);
+  background: rgba(255, 94, 26, 0.08);
+  box-shadow: 0 4px 16px rgba(255, 94, 26, 0.15);
+}
+
+.logo-fixed:active {
+  transform: scale(0.95);
+}
+
+@media(max-width: 768px) {
+  .logo-fixed {
+    width: 45px;
+    height: 45px;
+    top: 15px;
+    right: 15px;
+  }
+}
 
 /* ================================================
    SIDEBAR — menú lateral glassmorphism
@@ -102,21 +149,21 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rota
 .btn-primary { background: var(--naranja); color: var(--blanco); }
 .btn-primary:hover { background: var(--rosa); transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255,45,120,0.3); }
 .btn-outline { background: transparent; border: 2px solid var(--negro); color: var(--negro); }
-.btn-outline:hover { background: var(--negro); color: var(--blanco); transform: translateY(-2px); }
+.btn-outline:hover { background: var(--amarillo_suave); color: var(--negro); transform: translateY(-2px); }
 .btn-full { width: 100%; text-align: center; }
 
 /* ================================================
    ETIQUETA DE SECCIÓN (pequeño tag encima del título)
 ================================================= */
-.s-tag { display: inline-block; font-family: var(--f-serif); font-size: 0.78rem; letter-spacing: 4px; text-transform: uppercase; color: var(--naranja); background: rgba(255,94,26,0.1); padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+.s-tag { display: inline-block; font-family: var(--f-serif); font-size: 0.78rem; letter-spacing: 4px; text-transform: uppercase; color: var(--blanco); background: rgb(27, 27, 26); padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
 .s-tag.center { display: block; text-align: center; }
 
 h2 { font-family: var(--f-serif); font-size: clamp(1.8rem,4vw,3rem); font-weight: 700; line-height: 1.25; margin-bottom: 20px; }
 h2.center { text-align: center; }
-h2 em { color: var(--naranja); font-style: italic; }
+h2 em { color: var(--amarillo_suave); font-style: italic; }
 
 /* ================================================
-   FOOTER compartido
+   Clases de cada contenido en el footer
 ================================================= */
 footer { background: #080807; color: rgba(255,255,255,0.55); padding: 64px 0 0; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 40px; padding-bottom: 48px; }

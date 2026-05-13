@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KUISY — Sobre Nosotros</title>
+    <link rel="icon" href="../img/logo2.icon" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <style>
@@ -39,11 +40,34 @@
     .team-card:hover img { filter:grayscale(0%); }
     .team-card h3 { font-family:var(--f-serif); font-size:1.1rem; color:var(--blanco); margin-bottom:4px; }
     .team-card p  { font-size:.88rem; color:rgba(255,255,255,.5); letter-spacing:2px; text-transform:uppercase; }
+
+    /* ---- Ubicación: dirección e imágenes ---- */
+    .ubicacion { 
+      padding:90px 0; 
+      background:var(--blanco);
+      background-image: linear-gradient(rgba(255,255,255,0.98), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    .ubi-content { display:grid; grid-template-columns:1fr 1.2fr; gap:48px; align-items:center; position: relative; z-index: 1; }
+    @media(max-width:768px){ .ubi-content { grid-template-columns:1fr; } }
+    .ubi-text h2 { margin-bottom:24px; }
+    .ubi-direccion { font-size:1.15rem; color:var(--naranja); font-weight:600; display:flex; align-items:center; gap:8px; }
+    .ubi-images { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .ubi-images img { width: 105%; height: 300px; object-fit:cover; border-radius: 16px; box-shadow:var(--sombra); transition:transform .3s; }
+    .ubi-images img:hover { transform:scale(1.05); }
   </style>
 </head>
 <body>
 
   <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+
+  <!-- Logo fijo en esquina superior derecha -->
+  <a href="index.html" class="logo-fixed" title="Ir a inicio">
+    <img src="../img/logo2.icon" alt="KUISY Logo" />
+  </a>
 
   <nav class="sidebar" id="sidebar">
     <div class="sidebar-logo">KUISY</div>
@@ -51,7 +75,6 @@
       <li><a href="index.html"    onclick="closeMenu()">✦ Inicio</a></li>
       <li><a href="nosotros.html" onclick="closeMenu()">✦ Sobre Nosotros</a></li>
       <li><a href="menu.html"     onclick="closeMenu()">✦ Menú</a></li>
-      <li><a href="reservas.html" onclick="closeMenu()">✦ Reservas</a></li>
       <li><a href="#footer"       onclick="closeMenu()">✦ Contacto</a></li>
     </ul>
   </nav>
@@ -75,54 +98,51 @@
       <!-- Texto de la historia del restaurante -->
       <div class="hist-text fade-up">
         <span class="s-tag">Cómo nació KUISY</span>
-        <h2>Más que un restaurante,<br/><em>un hogar con sabor</em></h2>
+        <h2>El sabor de la creatividad<br/><em>y la tecnología</em></h2>
         <p>
-          Todo comenzó en 2019 cuando <strong>Valeria Quispe</strong>, chef limeña de tercera
-          generación, llegó a Santo Domingo con una maleta llena de recetas de su abuela
-          y el sueño de mostrarle a la isla el verdadero sabor de los Andes.
+         KUISY nace en 2026 como parte del proyecto final estudiantil de informática de cuarto grado. Este restaurante ficticio fue creado por los compañeros Abdiel Capellán, Malbin Saldaña y Britany Severino, quienes decidieron unir creatividad, diseño y tecnología para desarrollar una página web moderna e innovadora inspirada en la gastronomía latinoamericana.
+El nombre KUISY proviene de la palabra quechua “kusi”, que significa alegría, felicidad y buena fortuna, reflejando la esencia vibrante y acogedora del proyecto. Además de presentar un concepto gastronómico llamativo, el objetivo principal fue demostrar y explotar los conocimientos adquiridos en el área de desarrollo web, utilizando herramientas de diseño, estructura de páginas, creatividad visual y organización digital.
+La inspiración artística del proyecto surge de la energía urbana y colorida de la Comuna 13, mezclando lo moderno con lo cultural para crear una identidad visual única. Cada detalle de la página fue pensado para transmitir una experiencia dinámica, juvenil y auténtica.
+Más que un simple trabajo escolar, KUISY representa el esfuerzo, la dedicación y la imaginación de un equipo de estudiantes que buscó convertir una idea en una experiencia digital creativa y profesional.
         </p>
-        <p>
-          El nombre <strong>KUISY</strong> viene del quechua <em>kusi</em>, que significa
-          <em>alegría, dicha, ventura</em>. Porque eso es exactamente lo que Valeria quería
-          crear: un lugar donde cada bocado fuera una pequeña celebración.
-        </p>
-        <p>
-          Nos inspiramos en la <strong>Comuna 13 de Medellín</strong>, donde el arte urbano
-          transformó un barrio entero. Nosotros hacemos lo mismo con la gastronomía:
-          tomamos ingredientes humildes y los convertimos en obras maestras.
-        </p>
-        <p>
-          Hoy, KUISY es el punto de encuentro de la comunidad latina en Santo Domingo.
-          Un espacio donde la sofisticación nunca pierde de vista la calidez del hogar.
-        </p>
+
+        
         <!-- Hipervínculo directo al menú -->
         <a href="menu.html" class="btn btn-outline" style="margin-top:16px;">Conoce nuestra carta</a>
       </div>
 
-      <!-- Imagen del restaurante con badge -->
+      <!-- Video del restaurante -->
       <div class="hist-img">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Chef KUISY"/>
-        
+        <video width="100%" height="530" controls style="border-radius: 12px; object-fit: cover;">
+          <source src="Video2_kuisy.mp4" type="video/mp4">
+          
+        </video>
       </div>
-
     </div>
   </section>
-
-
-  <!-- CTA final -->
-  <section style="background:var(--naranja);padding:60px 24px;text-align:center;">
-    <h2 style="color:var(--blanco);margin-bottom:12px;">¿Quieres conocernos <em style="color:var(--negro);">en persona?</em></h2>
-    <p style="color:rgba(255,255,255,.85);margin-bottom:28px;">Reserva tu mesa y vive la experiencia KUISY.</p>
-    <a href="reservas.html" class="btn" style="background:var(--negro);color:var(--blanco);">Reservar Mesa ✦</a>
+  <!-- ===== UBICACIÓN ===== -->
+  <section class="ubicacion">
+    <div class="container ubi-content">
+      <div class="ubi-text fade-up">
+        <h2>¿Dónde nos ubicamos?</h2>
+        <p class="ubi-direccion">📍 Av. Abraham Lincoln 45, Santo Domingo</p>
+        <p style="color:var(--negro); line-height:1.8; margin-top:16px;">Visítanos en nuestro local y disfruta de una experiencia gastronómica única. Te esperamos con los brazos abiertos.</p>
+      </div>
+      <div class="ubi-images fade-up">
+        <img src="local_dentro.png" alt="Interior del restaurante KUISY"/>
+        <img src="LOCAL_KUISY.png" alt="Exterior del restaurante KUISY"/>
+      </div>
+    </div>
   </section>
 
   <footer id="footer">
     <div class="container footer-grid">
       <div class="footer-col"><p class="footer-logo">KUISY</p><p>Alegría · Dicha · Ventura</p></div>
-      <div class="footer-col"><h4>Horarios</h4><p>Lun–Vie: 12pm–11pm</p><p>Sáb–Dom: 11am–12am</p></div>
-      <div class="footer-col"><h4>Contacto</h4><p>📞 +1 (809) 374-2658</p><p>📧 hola@kuisy.com</p></div>
-      <div class="footer-col"><h4>Páginas</h4><a href="index.html">Inicio</a><a href="menu.html">Menú</a><a href="reservas.html">Reservas</a></div>
-       <div class="footer-col"><h4>Dirección</h4><p>📍 Av. Abraham Lincoln 45, Santo Domingo</p></div>
+      <div class="footer-col"><p class="footer-logo">Horarios</p><p>Lun–Vie: 12pm–11pm</p><p>Sáb–Dom: 11am–12am</p></div>
+      <div class="footer-col"><p class="footer-logo">Contacto</p><p>📞 +1 (809) 374-2658</p><p>📧 hola@kuisy.com</p></div>
+      <div class="footer-col"><p class="footer-logo">Páginas</p><a href="index.html">Inicio</a><a href="menu.html">Menú</a><a href="reservas.html">Reservas</a></div>
+       <div class="footer-col"><p class="footer-logo">Dirección</p><p>📍 Av. Abraham Lincoln 45, Santo Domingo</p></div>
+        <div class="footer-col"><p class="footer-logo">Autores</p><p> Abdiel Capellán <br>Malbin Saldaña <br>Britany Severino</p></div>
     <div class="footer-bottom">&copy; 2026 Restaurante KUISY</div>
   </footer>
 

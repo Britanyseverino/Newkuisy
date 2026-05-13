@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KUISY — Inicio</title>
-  <link rel="icon" href="C:\Users\Brita\OneDrive\Desktop\workpace\img\logo2.png" type="image/png">
+  <link rel="icon" href="../img/logo2.icon" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
   <!-- Hoja de estilos compartida por todas las páginas -->
   <link rel="stylesheet" href="style.css"/>
@@ -60,6 +60,11 @@
   <!-- Botón hamburguesa (abre/cierra el sidebar) -->
   <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
 
+  <!-- Logo fijo en esquina superior derecha -->
+  <a href="index.html" class="logo-fixed" title="Ir a inicio">
+    <img src="../img/logo2.icon" alt="KUISY Logo" />
+  </a>
+
   <!-- Sidebar: menú lateral con efecto vidrio (glassmorphism en style.css) -->
   <nav class="sidebar" id="sidebar">
     <div class="sidebar-logo">KUISY</div>
@@ -68,7 +73,6 @@
       <li><a href="index.html"    onclick="closeMenu()">✦ Inicio</a></li>
       <li><a href="nosotros.html" onclick="closeMenu()">✦ Sobre Nosotros</a></li>
       <li><a href="menu.html"     onclick="closeMenu()">✦ Menú</a></li>
-      <li><a href="reservas.html" onclick="closeMenu()">✦ Reservas</a></li>
       <li><a href="#footer"       onclick="closeMenu()">✦ Contacto</a></li>
     </ul>
   </nav>
@@ -86,14 +90,12 @@
     <div class="hero-content">
       <p class="hero-tag">✦ Lima · Andes · Latinoamérica ✦</p>
       <h1 class="hero-title">KUISY</h1>
-      <p class="hero-sub"><em>kusi — quechua: alegría, dicha, ventura</em></p>
+      <p class="hero-sub"><em>kuisy — quechua: alegría, dicha, ventura</em></p>
       <p class="hero-desc">Donde la tradición andina se viste de arte urbano.<br/>Un hogar sofisticado con el sabor más auténtico de América.</p>
       <div class="hero-btns">
         <!-- Hipervínculo al menú de comida (página separada) -->
         <a href="menu.html" class="btn btn-primary">Ver el Menú</a>
-        <!-- Hipervínculo al formulario de reservas (página separada) -->
-        <a href="reservas.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5);color:var(--blanco);">Reservar Mesa</a>
-      </div>
+      
     </div>
   </section>
 
@@ -104,62 +106,41 @@
         <div class="feat-card">
           <div class="feat-icon">🌿</div>
           <h3>Ingredientes Frescos</h3>
-          <p>Seleccionados cada mañana en mercados locales y traídos directamente del campo.</p>
+          <p>Seleccionamos ingredientes latinoamericanos de alta calidad para crear platos gourmet llenos de sabor, tradición y autenticidad.</p>
         </div>
         <div class="feat-card">
           <div class="feat-icon">🎨</div>
           <h3>Arte en cada Plato</h3>
-          <p>Inspirados en los murales de la Comuna 13, cada presentación es una obra de arte.</p>
+          <p>Cada presentación combina elegancia, cultura y creatividad, convirtiendo cada comida en una experiencia visual y gastronómica.</p>
         </div>
         <div class="feat-card">
           <div class="feat-icon">🏔️</div>
           <h3>Recetas Ancestrales</h3>
-          <p>Técnicas quechuas transmitidas por generaciones, llevadas a la mesa moderna.</p>
+          <p>Fusionamos recetas tradicionales latinoamericanas con un toque moderno para resaltar nuestras raíces de forma sofisticada.</p>
         </div>
         <div class="feat-card">
           <div class="feat-icon">🏠</div>
           <h3>Como en Casa</h3>
-          <p>Un ambiente que abraza: sofisticado, cálido y siempre a la moda.</p>
+          <p>Disfruta un ambiente cálido, elegante y acogedor, abierto de 12:00 PM a 11:00 PM para compartir momentos inolvidables.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== LLAMADA A LA ACCIÓN ===== -->
-  <section class="cta">
-    <h2>¿Listo para vivir<br/><em>la experiencia KUISY?</em></h2>
-    <p>Reserva tu mesa hoy y déjate llevar por los sabores que cambiaron Santo Domingo.</p>
-    <!-- Hipervínculo a la página de reservas -->
-    <a href="reservas.html" class="btn btn-primary">Reservar Ahora ✦</a>
-  </section>
 
   <!-- ===== FOOTER ===== -->
+  
   <footer id="footer">
     <div class="container footer-grid">
-      <div class="footer-col">
-        <p class="footer-logo">KUISY</p>
-        <p>Alegría · Dicha · Ventura</p>
-      </div>
-      <div class="footer-col">
-        <h4>Horarios</h4>
-        <p>Lun–Vie: 12pm – 11pm</p>
-        <p>Sáb–Dom: 11am – 12am</p>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <p>📞 +1 (809) 374-2658</p>
-        <p>📧 hola@kuisy.com</p>
-        <p>📍 Av. Abraham Lincoln 45, Santo Domingo</p>
-      </div>
-      <div class="footer-col">
-        <h4>Páginas</h4>
-        <a href="nosotros.html">Sobre Nosotros</a>
-        <a href="menu.html">Menú</a>
-        <a href="reservas.html">Reservas</a>
-      </div>
-    </div>
-    <div class="footer-bottom">&copy; 2026 Restaurante KUISY — Todos los derechos reservados.</div>
+      <div class="footer-col"><p class="footer-logo">KUISY</p><p>Alegría · Dicha · Ventura</p></div>
+      <div class="footer-col"><p class="footer-logo">Horarios</p><p>Lun–Vie: 12pm–11pm</p><p>Sáb–Dom: 11am–12am</p></div>
+      <div class="footer-col"><p class="footer-logo">Contacto</p><p>📞 +1 (809) 374-2658</p><p>📧 hola@kuisy.com</p></div>
+      <div class="footer-col"><p class="footer-logo">Páginas</p><a href="index.html">Inicio</a><a href="menu.html">Menú</a><a href="reservas.html">Reservas</a></div>
+       <div class="footer-col"><p class="footer-logo">Dirección</p><p>📍 Av. Abraham Lincoln 45, Santo Domingo</p></div>
+        <div class="footer-col"><p class="footer-logo">Autores</p><p> Abdiel Capellán <br>Malbin Saldaña <br>Britany Severino</p></div>
+    <div class="footer-bottom">&copy; 2026 Restaurante KUISY</div>
   </footer>
+
 
   <script src="main.js"></script>
 </body>
